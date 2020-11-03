@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 20:22:16 by abelarif          #+#    #+#             */
-/*   Updated: 2020/10/22 14:14:03 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/03 09:53:50 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		check_nl(const char *rest)
 	return (-1);
 }
 
-char	*ft_strdup(const char *s1)
+char	*my_strdup(const char *s1)
 {
 	char	*s;
 	int		len;
@@ -56,8 +56,8 @@ char	*strjoin(char **rest, char *buf)
 	int		i;
 	int		j;
 
-	lenbuf = my_strlen(buf);
-	lenrest = my_strlen(*rest);
+	lenbuf = ft_strlen(buf);
+	lenrest = ft_strlen(*rest);
 	if (!(p = malloc((lenrest + lenbuf + 1) * sizeof(char))))
 		return (0);
 	i = -1;
@@ -77,7 +77,7 @@ char	*r_r(char *rest, int index_nl)
 	int		i;
 	int		len_rest;
 
-	len_rest = (int)my_strlen(rest);
+	len_rest = (int)ft_strlen(rest);
 	i = 0;
 	if (!(r = malloc(sizeof(char) * (len_rest - index_nl))))
 		return (0);

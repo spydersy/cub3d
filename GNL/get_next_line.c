@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 22:59:14 by abelarif          #+#    #+#             */
-/*   Updated: 2020/10/22 14:14:03 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/03 09:54:03 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ int		ft_checkvalue(int read_value, char **line, char *rest, char *buf)
 	}
 	else if (read_value == 0 && i == 0)
 	{
-		*line = ft_strdup(rest);
+		*line = my_strdup(rest);
 		i++;
 		free_all(buf, &rest);
 		return (0);
 	}
 	else if (read_value == 0 && i > 0)
-		*line = ft_strdup("");
+		*line = my_strdup("");
 	free(buf);
 	return (0);
 }

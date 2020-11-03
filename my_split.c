@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 21:42:12 by abelarif          #+#    #+#             */
-/*   Updated: 2020/10/31 17:33:06 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/03 10:00:16 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static	size_t		count_word(const char *s, char c, char d)
 	return (count);
 }
 
-void				*free_split(char **split, int k)
+void				*my_free_split(char **split, int k)
 {
 	while (k >= 0)
 	{
@@ -72,7 +72,7 @@ char				**my_split(char const *s, char c, char d)
 	{
 		if (!(split[i] = (char *)malloc(sizeof(char)
 						* (len_word(&s[k], c, d) + 1))))
-			return ((free_split(split, k - 1)));
+			return ((my_free_split(split, k - 1)));
 		j = 0;
 		while (s[k] == c || s[k] == d)
 			k++;

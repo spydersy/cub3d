@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/01 13:18:02 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/03 11:21:57 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
-#include <string.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <fcntl.h>
-#include "./GNL/get_next_line.h"
-#include "./LBFT/libft.h"
+# include <string.h>
+# include <stdlib.h>
+# include <errno.h>
+# include <fcntl.h>
+# include "./GNL/get_next_line.h"
+# include "./LBFT/libft.h"
 
 /*
-	nb values;
+	g_data.nb values;
 	0 = resolution
 	1 = no_texture
 	2 = so_texture
@@ -47,9 +47,15 @@ typedef struct	s_data
 
 t_data			g_data;
 
-void			ft_data(int save, int fd);
+void			ft_data(int fd);
 void			ft_error(char *str);
 int				max_of(int i, int j);
 char			**my_split(char const *s, char c, char d);
+int				get_texture(char **content);
+int				get_path(int index, const char *str);
+int				get_rgb(int index, const char *str);
+int				get_resolution(char **content);
+int				all_digit(const char *str);
+int				skip_line(const char *line);
 
 #endif
