@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/03 11:21:57 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:38:13 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_data
 t_data			g_data;
 
 void			ft_data(int fd);
+void		   ft_map(int fd);
 void			ft_error(char *str);
 int				max_of(int i, int j);
 char			**my_split(char const *s, char c, char d);
