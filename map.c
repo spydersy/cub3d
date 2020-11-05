@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/05 10:00:19 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/05 11:49:05 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	check_line(const char *line, int nb_line)
 		j = -1;
 		while (check_char[++j])
 		{
+			if (!(line[i] == '1' || line[i] == '0' || line[i] == '2'
+			|| line[i] == 'N' || line[i] == 'E' || line[i] == 'S'
+			|| line[i] == 'W' || line[i] == ' ' || line[i] == '\t'))
+				ft_error("BAAAD CHAR\n");
 			if (check_char[j] == line[i])
 			{
 				if (2 <= j)
@@ -80,4 +84,5 @@ void   ft_map(int fd)
 		}
 	}
 	printf("last line : %s\n", line);
+	check_line(line, nb_line);
 }
