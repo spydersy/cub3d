@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:59 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/03 11:21:34 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/03 14:43:25 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ int			main(int argc, char *argv[])
 		ft_error("Read file\n");
 	ft_data(fd);
 	ft_map(fd);
-	ft_print();
 	return (0);
 }

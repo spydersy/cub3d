@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 14:08:50 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/03 11:21:47 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:08:42 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	ft_init(void)
 	g_data.nb[7] = 0;
 	g_data.resolution[0] = -1;
 	g_data.resolution[1] = -1;
+	g_player.x = -1;
+	g_player.y = -1;
+	g_player.oreintation = 0;
 }
 
 void	ft_data(int fd)

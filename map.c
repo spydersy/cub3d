@@ -3,41 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/03 12:40:15 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/05 10:00:19 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdio.h>
 
-void	check_line(const char *line)
+void	get_player(char orientation, int x, int y)
 {
-	int			i;
-	char		*check_map;
-	int			j;
+	if (g_player.oreintation)
+		ft_error("Multiple definition of Player\n");
+	g_player.x = x;
+	g_player.y = y;
+	if (orientation == 'N')
+		g_player.oreintation = 1;
+	else if (orientation == 'S')
+		g_player.oreintation = 2;
+	else if (orientation == 'E')
+		g_player.oreintation = 3;
+	else if (orientation == 'W')
+		g_player.oreintation = 4;
+}
 
-	j = -1;
-	i = 0;
-	check_map = "02NSEW";
-	while (line[i])
+void	check_line(const char *line, int nb_line)
+{
+	int		i;
+	int		j;
+	char	*check_char;
+
+	i = -1;
+	check_char = "02NSEW";
+	while (line[++i])
 	{
-		while (check_map[++j])
+		j = -1;
+		while (check_char[++j])
 		{
-			if (line[i] == check_map[j])
+			if (check_char[j] == line[i])
 			{
-				if (i == (int)ft_strlen(line) - 1 || i == 0)
-					ft_error("First or Last bit Map\n");
-				else if (line[i + 1] != '0' && line[i - 1] != '1'
-				&& line[i - 1] != '2')
-					ft_error("Wrong bit bef\n");
-				else if (line[i + 1] != '0' && line[i + 1] != '1'
-				&& line[i + 1] != '2')
-					ft_error("Wrong bit aft\n");
+				if (2 <= j)
+					get_player(check_char[j], i, nb_line);
+				if (i == 0 || i == (int)ft_strlen(line) - 1)
+					ft_error("First or Last char in map\n");
+				else if (line[i - 1] == ' ' || line[i - 1] == '\t')	//before
+				{
+					ft_error("BEFORE\n");
+				}
+				else if (line[i + 1]
+				&& (line[i + 1] == ' ' || line[i + 1] == '\t'))		//after
+				{
+					ft_error("AFTER\n");
+				}
 			}
 		}
-		i++;
 	}
 }
 
@@ -50,10 +71,13 @@ void   ft_map(int fd)
 	r = 11;
 	while ((r = get_next_line(fd, &line)) > 0)
 	{
+		// printf("%d|map : >>%s<<\n", r, line);
 		if (skip_line(line) == 0)
 		{
 			nb_line++;
-			check_line(line);
+			printf("map : >>%s<<\n", line);
+			check_line(line, nb_line);
 		}
 	}
+	printf("last line : %s\n", line);
 }
