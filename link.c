@@ -6,11 +6,12 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 09:31:43 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/09 09:33:41 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/09 14:27:46 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "link.h"
+#include "cub3d.h"
 
 void		insertion(t_liste *liste, char *nvline)
 {
@@ -28,19 +29,16 @@ void		insertion(t_liste *liste, char *nvline)
     liste->first = nouveau;
 }
 
-t_liste		*initialisation()
+t_liste		*initialisation(char *str)
 {
-    t_liste *liste;
-    t_line *element;
+    t_liste		*liste;
+    t_line		*element;
 
 	liste = malloc(sizeof(t_liste));
     element = malloc(sizeof(t_line));
 	if (liste == NULL || element == NULL)
-    {
-        exit(EXIT_FAILURE);
-    }
-
-    element->line = "0";
+		ft_error("link\n");
+    element->line = str;
     element->next = NULL;
     liste->first = element;
 
@@ -50,32 +48,30 @@ t_liste		*initialisation()
 void	afficherListe(t_liste *liste)
 {
     if (liste == NULL)
-    {
         exit(EXIT_FAILURE);
-    }
-
     t_line *actuel;
 	actuel = liste->first;
 
     while (actuel != NULL)
     {
-        printf("%s -> ", actuel->line);
+        printf("link : >>%s<<\n", actuel->line);
         actuel = actuel->next;
     }
-    printf("NULL\n");
+    printf(">>NULL<<\n");
 }
 
-int main()
-{
-    t_liste *maListe;
+// int main()
+// {
+//     t_liste *maListe;
 
-	maListe = initialisation();
-    afficherListe(maListe);
-    insertion(maListe, "1");
-    afficherListe(maListe);
-    insertion(maListe, "2");
-    afficherListe(maListe);
-    insertion(maListe, "3");
-    afficherListe(maListe);
-    return 0;
-}
+// 	const char *str = "first";
+// 	maListe = initialisation(str);
+//     afficherListe(maListe);
+//     insertion(maListe, "1");
+//     afficherListe(maListe);
+//     insertion(maListe, "2");
+//     afficherListe(maListe);
+//     insertion(maListe, "3");
+//     afficherListe(maListe);
+//     return 0;
+// }

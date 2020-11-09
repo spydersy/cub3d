@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/09 07:39:27 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/09 16:38:01 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int		skip_void(int fd)
 	{
 		if (skip_line(line) == 0)
 		{
-			printf("%d|map : >>%s<<\n", 1, line);
 			check_line(line, 1);
-			return (1);
+			g_liste = initialisation(line);
+			return (ft_strlen(line));
 		}
 	}
 	if (r == 0)
@@ -94,25 +94,79 @@ int		skip_void(int fd)
 	return (0);
 }
 
+void	move(t_liste *liste)
+{
+    if (liste == NULL)
+        exit(EXIT_FAILURE);
+    t_line *actuel;
+	actuel = liste->first;
+
+    while (actuel != NULL)
+    {
+        printf("link : >>%s<<\n", actuel->line);
+        actuel = actuel->next;
+    }
+    printf(">>NULL<<\n");
+}
+
+void	ft_move(int nb_line, int max_len)
+{
+	t_line		*actual;
+	int			i;
+
+	actual = g_liste->first;
+	nb_line--;
+	while (nb_line >= 0)
+	{
+		ft_memcpy(g_map[nb_line], actual->line, ft_strlen(actual->line));
+		if ((i = ft_strlen(actual->line)) < max_len)
+		{
+			i = 
+		}
+		actual = actual->next;
+	}
+}
+	
+void	map_2d(int nb_line, int max_len)
+{
+	int		i;
+
+	i = -1;
+	if ((g_map = malloc(sizeof(char *) * (nb_line + 1))) == 0)
+		ft_error("malloc map 1\n");
+	while (++i < nb_line)
+	{
+		if ((g_map = malloc(sizeof(char) * (max_len + 1))) == 0)
+			ft_error("malloc map 2\n");
+	}
+	g_map[i] = NULL;
+	ft_move(nb_line, max_len);
+}
+
 void	ft_map(int fd)
 {
 	static int      nb_line = 0;
 	int             r;
 	char            *line;
+	int				max_len;
 
 	r = 11;
-	nb_line = skip_void(fd);
+	max_len = skip_void(fd);
+	nb_line++;
 	while ((r = get_next_line(fd, &line)) > 0)
 	{
 		nb_line++;
-		printf("%d|map : >>%s<<\n", nb_line, line);
+		max_len = ((max_len <= (int)ft_strlen(line))
+				? (ft_strlen(line)) : (max_len));
+		insertion(g_liste, line);
 		if (skip_line(line) == 0)
-		{
-			// printf("map : >>%s<<\n", line);
 			check_line(line, nb_line);
-		}
 	}
 	nb_line++;
-	printf("%d|last line : %s\n", nb_line, line);
 	check_line(line, nb_line);
+	insertion(g_liste, line);
+	afficherListe(g_liste);
+	printf("nb_line : %d\n", nb_line);
+	printf("max_len : %d\n", max_len);
+	// map_2d(nb_line, max_len);
 }

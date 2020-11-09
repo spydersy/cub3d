@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/09 09:11:25 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/09 14:13:00 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include "./GNL/get_next_line.h"
 # include "./LBFT/libft.h"
-
+# include "link.h"
 /*
 	g_data.nb values;
 	0 = resolution
@@ -58,7 +58,9 @@ typedef	struct	s_player
 char			**g_map;
 t_player		g_player;
 t_data			g_data;
+t_liste			*g_liste;
 
+t_liste			*initialisation(char *str);
 void			ft_data(int fd);
 void		   ft_map(int fd);
 void			ft_error(char *str);
