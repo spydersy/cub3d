@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/04 11:04:20 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/09 08:22:55 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_data
 	int			fl_color[3];
 }				t_data;
 
+
 typedef	struct	s_player
 {
 	int			x;
@@ -52,6 +53,21 @@ typedef	struct	s_player
 	int			oreintation;
 }				t_player;
 
+
+typedef struct	s_element t_element;
+
+typedef struct	s_line
+{
+    char		*line;
+    t_line		*next;
+}				t_line;
+
+typedef struct	s_liste
+{
+    t_element	*premier;
+}				t_liste;
+
+char			**g_map;
 t_player		g_player;
 t_data			g_data;
 
