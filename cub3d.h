@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/09 14:13:00 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/10 10:52:33 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,16 @@ t_data			g_data;
 t_liste			*g_liste;
 
 t_liste			*initialisation(char *str);
+void			ft_move(int nb_line, int max_len);
+size_t			my_strlcpy(char *dst, const char *src, size_t size);
 void			ft_data(int fd);
 void		   ft_map(int fd);
+void			get_player(char orientation, int x, int y);
+void			bad_char(const char *line, int i);
+void			check_line(const char *line, int nb_line);
+int				skip_void(int fd);
+void	bef_aft(char check_char, const char *line,
+				int nb_line, int i);
 void			ft_error(char *str);
 int				max_of(int i, int j);
 char			**my_split(char const *s, char c, char d);

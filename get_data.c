@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:01:08 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/03 11:02:30 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/10 10:50:33 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	get_player(char orientation, int x, int y)
+{
+	if (g_player.oreintation)
+		ft_error("Multiple definition of Player\n");
+	g_player.x = x;
+	g_player.y = y;
+	if (orientation == 'N')
+		g_player.oreintation = 1;
+	else if (orientation == 'S')
+		g_player.oreintation = 2;
+	else if (orientation == 'E')
+		g_player.oreintation = 3;
+	else if (orientation == 'W')
+		g_player.oreintation = 4;
+}
 
 int		get_resolution(char **content)
 {
