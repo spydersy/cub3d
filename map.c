@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 08:55:25 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/10 09:46:24 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,49 @@ void	bad_char(const char *line, int i)
 	|| line[i] == 'N' || line[i] == 'E' || line[i] == 'S'
 	|| line[i] == 'W' || line[i] == ' ' || line[i] == '\t'))
 		ft_error("BAAAD CHAR\n");
+}
+
+void	check_horizontal(int x, int y, int y_max)
+{
+	if (y == 0)
+		ft_error("bad char at first line\n");
+	else if (y == y_max - 1)
+		ft_error("bad char at last line\n");
+	else if (g_map[y - 1][x] != '0' || g_map[y - 1][x] != '1')
+	{
+		printf(">>%s<<\n", g_map[y]);
+		printf(">>%c, %d<<\n", g_map[y][x], x);
+		ft_error("+++++++++++++++++++++");
+	}
+	else if (g_map[y + 1][x] != '0' || g_map[y + 1][x] != '1')
+	{
+		printf(">>%s<<\n", g_map[y]);
+		ft_error("---------------------");
+	}
+}
+
+void	horizontal_map(int y_max)
+{
+	int		y;
+	int		i;
+	int		x;
+	char	*check_char;
+
+	y = -1;
+	check_char = "02ENSW";
+	while (g_map[++y])
+	{
+		x = -1;
+		while (g_map[y][++x])
+		{
+			i = -1;
+			while (check_char[++i])
+			{
+				if (check_char[i] == g_map[y][x])
+					check_horizontal(x, y, y_max);
+			}
+		}
+	}
 }
 
 void	bef_aft(char check_char, const char *line,
@@ -123,7 +166,7 @@ void	ft_move(int nb_line, int max_len)
 	nb_line--;
 	while (nb_line >= 0 && g_map[nb_line])
 	{
-		printf("map : %4d|>>%s<<\n", nb_line, actual->line);
+		// printf("map : %4d|>>%s<<\n", nb_line, actual->line);
 		my_strlcpy(g_map[nb_line], actual->line, ft_strlen(actual->line));
 		if ((i = ft_strlen(actual->line)) < max_len)
 		{
@@ -156,6 +199,7 @@ void	map_2d(int nb_line, int max_len)
 		i++;
 	}
 	ft_move(nb_line, max_len);
+	horizontal_map(nb_line);
 }
 
 void	show_map(void)
@@ -170,6 +214,7 @@ void	show_map(void)
 		i++;
 	}
 }
+
 
 void	ft_map(int fd)
 {
