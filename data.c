@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 14:08:50 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/04 11:08:42 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/10 08:09:11 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_data(int fd)
 	{
 		if ((r = get_next_line(fd, &line)) < 0)
 			ft_error("GNL\n");
-		printf(">>%s<<\n", line);
+		// printf(">>%s<<\n", line);
 		if (skip_line(line) == 0)
 		{
 			if (manip_line(line) == 1)

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/09 16:38:01 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/10 08:55:25 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,24 @@ int		skip_void(int fd)
 	return (0);
 }
 
-void	move(t_liste *liste)
+size_t	my_strlcpy(char *dst, const char *src, size_t size)
 {
-    if (liste == NULL)
-        exit(EXIT_FAILURE);
-    t_line *actuel;
-	actuel = liste->first;
+	size_t i;
+	size_t size_src;
 
-    while (actuel != NULL)
-    {
-        printf("link : >>%s<<\n", actuel->line);
-        actuel = actuel->next;
-    }
-    printf(">>NULL<<\n");
+	i = 0;
+	if (!src)
+		return (0);
+	size_src = ft_strlen(src);
+	if (size > 0)
+	{
+		while (src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+	}
+	return (size_src);
 }
 
 void	ft_move(int nb_line, int max_len)
@@ -116,38 +121,61 @@ void	ft_move(int nb_line, int max_len)
 
 	actual = g_liste->first;
 	nb_line--;
-	while (nb_line >= 0)
+	while (nb_line >= 0 && g_map[nb_line])
 	{
-		ft_memcpy(g_map[nb_line], actual->line, ft_strlen(actual->line));
+		printf("map : %4d|>>%s<<\n", nb_line, actual->line);
+		my_strlcpy(g_map[nb_line], actual->line, ft_strlen(actual->line));
 		if ((i = ft_strlen(actual->line)) < max_len)
 		{
-			i = 
+			while (i < max_len)
+			{
+				g_map[nb_line][i] = ' ';
+				i++;
+			}
+			g_map[nb_line][i] = '\0';
 		}
 		actual = actual->next;
+		nb_line--;
 	}
 }
-	
+
 void	map_2d(int nb_line, int max_len)
 {
 	int		i;
+	int		c;
 
-	i = -1;
+	c = 0;
+	i = 0;
 	if ((g_map = malloc(sizeof(char *) * (nb_line + 1))) == 0)
 		ft_error("malloc map 1\n");
-	while (++i < nb_line)
+	g_map[nb_line] = NULL;
+	while (i < nb_line)
 	{
-		if ((g_map = malloc(sizeof(char) * (max_len + 1))) == 0)
+		if ((g_map[i] = malloc(sizeof(char) * (max_len + 1))) == 0)
 			ft_error("malloc map 2\n");
+		i++;
 	}
-	g_map[i] = NULL;
 	ft_move(nb_line, max_len);
+}
+
+void	show_map(void)
+{
+	int		i;
+
+	i = 0;
+	printf("\nSHOW MAP\n\n");
+	while (g_map[i])
+	{
+		printf("ret : %4d|>>%s<<\n", i, g_map[i]);
+		i++;
+	}
 }
 
 void	ft_map(int fd)
 {
-	static int      nb_line = 0;
-	int             r;
-	char            *line;
+	static int		nb_line = 0;
+	int				r;
+	char			*line;
 	int				max_len;
 
 	r = 11;
@@ -165,8 +193,8 @@ void	ft_map(int fd)
 	nb_line++;
 	check_line(line, nb_line);
 	insertion(g_liste, line);
-	afficherListe(g_liste);
 	printf("nb_line : %d\n", nb_line);
 	printf("max_len : %d\n", max_len);
-	// map_2d(nb_line, max_len);
+	map_2d(nb_line, max_len);
+	show_map();
 }
