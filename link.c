@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 09:31:43 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 10:43:58 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/11 04:07:47 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void		insertion(t_liste *liste, char *nvline)
 
 	nouveau = malloc(sizeof(nouveau));
 	if (liste == NULL || nouveau == NULL)
-	{
 		ft_error("link\n");
-	}
 	nouveau->line = nvline;
 	nouveau->next = liste->first;
 	liste->first = nouveau;

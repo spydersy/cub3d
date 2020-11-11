@@ -6,28 +6,35 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 10:50:30 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/11 04:54:23 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
-
-
 void	check_horizontal(int x, int y, int y_max)
 {
 	if (y == 0)
+	{
+		// printf(">>%s<<\n", g_map[y]);
+		printf("(%d,%d)\n", y, x);
 		ft_error("bad char at first line\n");
+	}
 	else if (y == y_max - 1)
+	{
+		// printf(">>%s<<\n", g_map[y]);
 		ft_error("bad char at last line\n");
+	}
 	else if (g_map[y - 1][x] != '0' && g_map[y - 1][x] != '1'
 	&& g_map[y - 1][x] != '2' && g_map[y - 1][x] != 'N'
 	&& g_map[y - 1][x] != 'E' && g_map[y - 1][x] != 'S'
 	&& g_map[y - 1][x] != 'W')
 	{
-		printf(">>%s<<\n", g_map[y]);
-		printf(">>%d, %d<<\n", y, x);
+		printf ("to check   : >>%c<<\n", g_map[y][x]);
+		printf ("check with : >>%c<<\n", g_map[y - 1][x]);
+		// printf(">>%s<<\n", g_map[y]);
+		// printf(">>%d, %d<<\n", y, x);
 		ft_error("+++++++++++++++++++++");
 	}
 	else if (g_map[y + 1][x] != '0' && g_map[y + 1][x] != '1'
@@ -35,8 +42,8 @@ void	check_horizontal(int x, int y, int y_max)
 	&& g_map[y + 1][x] != 'E' && g_map[y + 1][x] != 'S'
 	&& g_map[y + 1][x] != 'W')
 	{
-		printf(">>%s<<\n", g_map[y]);
-		printf(">>%d, %d<<\n", y, x);
+		// printf(">>%s<<\n", g_map[y]);
+		// printf(">>%d, %d<<\n", y, x);
 		ft_error("---------------------");
 	}
 }
@@ -53,6 +60,7 @@ void	horizontal_map(int y_max)
 	while (g_map[++y])
 	{
 		x = -1;
+		// printf("line : >>%s<<\n", g_map[y]);
 		while (g_map[y][++x])
 		{
 			i = -1;
@@ -125,4 +133,10 @@ void	ft_map(int fd)
 	printf("nb_line : %d\n", nb_line);
 	printf("max_len : %d\n", max_len);
 	map_2d(nb_line, max_len);
+	int	i = 0;
+	while (g_map[i])
+	{
+		printf(">>%s<<\n", g_map[i]);
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:01:08 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 10:50:33 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/11 04:35:30 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ int		get_resolution(char **content)
 	return (0);
 }
 
+void	get_cl(int r, int g, int b)
+{
+	g_data.ce_color[0] = r;
+	g_data.ce_color[1] = g;
+	g_data.ce_color[2] = b;
+}
+
+void	get_fl(int r, int g, int b)
+{
+	g_data.fl_color[0] = r;
+	g_data.fl_color[1] = g;
+	g_data.fl_color[2] = b;
+}
+
 int		get_rgb(int index, const char *str)
 {
 	char	**rgb;
@@ -65,17 +79,9 @@ int		get_rgb(int index, const char *str)
 	if (!(all_digit(rgb[0]) && all_digit(rgb[1]) && all_digit(rgb[2])))
 		ft_error("RGB\n");
 	if (index == 6)
-	{
-		g_data.ce_color[0] = ft_atoi(rgb[0]);
-		g_data.ce_color[1] = ft_atoi(rgb[1]);
-		g_data.ce_color[2] = ft_atoi(rgb[2]);
-	}
+		get_cl(ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	else
-	{
-		g_data.fl_color[0] = ft_atoi(rgb[0]);
-		g_data.fl_color[1] = ft_atoi(rgb[1]);
-		g_data.fl_color[2] = ft_atoi(rgb[2]);
-	}
+		get_fl(ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	g_data.nb[index] = 1;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 10:46:44 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 10:50:00 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/11 04:35:45 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int		skip_void(int fd)
 		{
 			check_line(line, 1);
 			g_liste = initialisation(line);
-			return (ft_strlen(line));
+			r = ft_strlen(line);
+			return (r);
 		}
 	}
 	if (r == 0)

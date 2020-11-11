@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 10:52:33 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/10 11:19:47 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@
 # include "./GNL/get_next_line.h"
 # include "./LBFT/libft.h"
 # include "link.h"
-/*
-	g_data.nb values;
-	0 = resolution
-	1 = no_texture
-	2 = so_texture
-	3 = we_texture
-	4 = ea_texture
-	5 = sp_texture
-	6 = ceilling color
-	7 = floor color
-*/
 
 typedef struct	s_data
 {
@@ -45,15 +34,12 @@ typedef struct	s_data
 	int			fl_color[3];
 }				t_data;
 
-
 typedef	struct	s_player
 {
 	int			x;
 	int			y;
 	int			oreintation;
 }				t_player;
-
-
 
 char			**g_map;
 t_player		g_player;
@@ -64,12 +50,12 @@ t_liste			*initialisation(char *str);
 void			ft_move(int nb_line, int max_len);
 size_t			my_strlcpy(char *dst, const char *src, size_t size);
 void			ft_data(int fd);
-void		   ft_map(int fd);
+void			ft_map(int fd);
 void			get_player(char orientation, int x, int y);
 void			bad_char(const char *line, int i);
 void			check_line(const char *line, int nb_line);
 int				skip_void(int fd);
-void	bef_aft(char check_char, const char *line,
+void			bef_aft(char check_char, const char *line,
 				int nb_line, int i);
 void			ft_error(char *str);
 int				max_of(int i, int j);

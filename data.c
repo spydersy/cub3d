@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 14:08:50 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 10:45:36 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/11 04:35:18 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int		manip_line(const char *line)
 	char			**content;
 	static int		nb_data = 0;
 	int				nb;
+	int				i;
 
+	i = 0;
 	nb = 0;
 	if ((content = my_split(line, ' ', '\t')) == NULL)
 		ft_error("Split\n");
