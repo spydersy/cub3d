@@ -6,12 +6,14 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/11 04:54:23 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/11 10:59:53 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+#include "./mlx/mlx.h"
+#include "./mlx/mlx_int.h"
 
 void	check_horizontal(int x, int y, int y_max)
 {
@@ -139,4 +141,5 @@ void	ft_map(int fd)
 		printf(">>%s<<\n", g_map[i]);
 		i++;
 	}
+	cub3d(nb_line, max_len);
 }

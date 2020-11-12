@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 11:19:47 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/11 11:00:10 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include "./GNL/get_next_line.h"
 # include "./LBFT/libft.h"
 # include "link.h"
+
+#include "./mlx/mlx_int.h"
+#include "./mlx/mlx.h"
 
 typedef struct	s_data
 {
@@ -46,6 +49,7 @@ t_player		g_player;
 t_data			g_data;
 t_liste			*g_liste;
 
+void			cub3d(int nb_line, int max_len);
 t_liste			*initialisation(char *str);
 void			ft_move(int nb_line, int max_len);
 size_t			my_strlcpy(char *dst, const char *src, size_t size);
