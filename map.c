@@ -6,14 +6,12 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/11 10:59:53 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/12 07:06:05 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
-#include "./mlx/mlx.h"
-#include "./mlx/mlx_int.h"
 
 void	check_horizontal(int x, int y, int y_max)
 {

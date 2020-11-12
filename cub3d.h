@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/11 11:00:10 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/12 05:25:35 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "./LBFT/libft.h"
 # include "link.h"
 
-#include "./mlx/mlx_int.h"
-#include "./mlx/mlx.h"
+#include "../mlx_int.h"
+#include "../mlx.h"
 
 typedef struct	s_data
 {
@@ -44,10 +44,18 @@ typedef	struct	s_player
 	int			oreintation;
 }				t_player;
 
+typedef struct	s_mlx
+{
+	void		*mlx;
+	void		*win;
+}				t_mlx;
+
+
 char			**g_map;
 t_player		g_player;
 t_data			g_data;
 t_liste			*g_liste;
+t_mlx			g_mlx;
 
 void			cub3d(int nb_line, int max_len);
 t_liste			*initialisation(char *str);
