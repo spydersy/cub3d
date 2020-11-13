@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:21:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/12 09:48:44 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/13 15:05:49 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	draw_space(int x, int y)
 		y_i = y * 20;
 		while (y_i <= y_max)
 		{
-			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x49979d);
+			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
+				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x000000);
+			else
+				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x49979d);
 			// printf("y:%6d y_max:%6d x:%6d x_max: %6d\n", y_i, y_max, x_i, x_max);
 			y_i++;
 		}
@@ -78,7 +81,10 @@ void	draw_player(int x, int y)
 		y_i = y * 20;
 		while (y_i <= y_max)
 		{
-			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xff0000);
+			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
+				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x000000);
+			else
+				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xff0000);
 			// printf("y:%6d y_max:%6d x:%6d x_max: %6d\n", y_i, y_max, x_i, x_max);
 			y_i++;
 		}
@@ -103,9 +109,9 @@ void	draw_wall(int x, int y)
 		y_i = y * 20;
 		while (y_i <= y_max)
 		{
-			// if (!y_i || !x_i || !(y % 20) || !(x % 20) || !((y + 1) % 20) || !((x + 1) % 20))
-				// mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xfbff00);
-			// else
+			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
+				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x000000);
+			else
 				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xffffff);
 			// printf("y:%6d y_max:%6d x:%6d x_max: %6d\n", y_i, y_max, x_i, x_max);
 			y_i++;
