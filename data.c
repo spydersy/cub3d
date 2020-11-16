@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 14:08:50 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/11 04:35:18 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/15 13:11:03 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		manip_line(const char *line)
 		ft_error("Split\n");
 	while (content[nb])
 		nb++;
+		// printf(">>%s<<\n", content[nb++]);
 	if (nb == 3)
 		nb_data += get_resolution(content);
 	else if (nb == 2)
@@ -60,14 +61,24 @@ void	ft_data(int fd)
 
 	r = 1;
 	ft_init();
+	// line = ft_strdup("");
+	// printf("fd : %d\n", fd);
 	while (r && nb < 8)
 	{
 		if ((r = get_next_line(fd, &line)) < 0)
 			ft_error("GNL\n");
+			printf("\n******GNL******\n");
+			int	 i = -1;
+			while (line[++i])
+			{
+				printf(">>%d<<\n", line[i]);
+			}
+			printf("gnl : >>%s<<\n", line);
 		if (skip_line(line) == 0)
 		{
 			if (manip_line(line) == 1)
 				nb++;
 		}
+		free(line);
 	}
 }

@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/11 07:58:59 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/14 19:45:07 by abelarif         ###   ########.fr       */
+/*   Created: 2020/01/09 12:53:19 by abelarif          #+#    #+#             */
+/*   Updated: 2020/01/09 14:42:24 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-// int		main()
-// {
-	// int		fd = open("map.cub", O_RDONLY);
-	// char	*line;
+void	*ft_calloc(size_t count, size_t size)
+{
+	void *dest;
 
-	// while (get_next_line(fd, &line))
-	// {
-		// printf(">>%s<<\n", line);
-	// }	
-	// return (0);
-// }
+	if (!(dest = malloc(count * size)))
+		return (0);
+	ft_bzero(dest, count * size);
+	return (dest);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   link.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 09:31:52 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/10 12:04:04 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/15 18:31:02 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define LINK_H
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdio.h>
 
 typedef struct s_line t_line;

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/11 07:58:59 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/14 19:45:07 by abelarif         ###   ########.fr       */
+/*   Created: 2020/01/09 14:36:12 by abelarif          #+#    #+#             */
+/*   Updated: 2020/01/09 14:37:10 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-// int		main()
-// {
-	// int		fd = open("map.cub", O_RDONLY);
-	// char	*line;
-
-	// while (get_next_line(fd, &line))
-	// {
-		// printf(">>%s<<\n", line);
-	// }	
-	// return (0);
-// }
+int		ft_tolower(int c)
+{
+	if (c <= 90 && c >= 65)
+		return (c + 32);
+	else
+		return (c);
+}

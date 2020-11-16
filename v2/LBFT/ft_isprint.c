@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/11 07:58:59 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/14 19:45:07 by abelarif         ###   ########.fr       */
+/*   Created: 2020/01/09 12:56:55 by abelarif          #+#    #+#             */
+/*   Updated: 2020/08/17 08:05:08 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-// int		main()
-// {
-	// int		fd = open("map.cub", O_RDONLY);
-	// char	*line;
-
-	// while (get_next_line(fd, &line))
-	// {
-		// printf(">>%s<<\n", line);
-	// }	
-	// return (0);
-// }
+int		ft_isprint(int c)
+{
+	if (c <= 126 && c >= 32)
+		return (1);
+	else
+		return (0);
+}

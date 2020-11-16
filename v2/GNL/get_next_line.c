@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 22:59:14 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/14 18:58:26 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/16 00:28:46 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,6 @@ char	*free_all(char *buf, char **rest)
 	}
 	return (NULL);
 }
-
-// size_t	ft_strlen(const char *s)
-// {
-	// int i;
-
-	// i = 0;
-	// if (s == NULL)
-		// return (0);
-	// while (s[i] != '\0')
-	// {
-		// i++;
-	// }
-	// return (i);
-// }
 
 int		ft_checkvalue(int read_value, char **line, char *rest, char *buf)
 {

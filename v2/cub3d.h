@@ -5,23 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/30 16:21:55 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/15 13:30:37 by abelarif         ###   ########.fr       */
+/*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
+/*   Updated: 2020/11/16 00:56:07 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-# define CUB3D_H
+#define CUB3D_H
 
-# include <string.h>
-# include <stdlib.h>
-# include <errno.h>
-# include <fcntl.h>
-# include "./GNL/get_next_line.h"
-# include "./LBFT/libft.h"
-# include "link.h"
-
-// #include "mlx_int.h"cle
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include "./link.h"
+#include "./GNL/get_next_line.h"
+#include "./LBFT/libft.h"
 #include "mlx.h"
 
 typedef struct	s_data
@@ -57,26 +57,22 @@ t_data			g_data;
 t_liste			*g_liste;
 t_mlx			g_mlx;
 
-void			cub3d(int nb_line, int max_len);
-t_liste			*initialisation(char *str);
-void			ft_move(int nb_line, int max_len);
-size_t			my_strlcpy(char *dst, const char *src, size_t size);
-void			ft_data(int fd);
-void			ft_map(int fd);
-void			get_player(char orientation, int x, int y);
-void			bad_char(const char *line, int i);
-void			check_line(const char *line, int nb_line);
-int				skip_void(int fd);
-void			bef_aft(char check_char, const char *line,
-				int nb_line, int i);
-void			ft_error(char *str);
-int				max_of(int i, int j);
-char			**my_split(char const *s, char c, char d);
-int				get_texture(char **content);
-int				get_path(int index, const char *str);
-int				get_rgb(int index, const char *str);
-int				get_resolution(char **content);
-int				all_digit(const char *str);
-int				skip_line(const char *line);
+void                ft_error (char *str);
+int                 max_of(int i, int j);
+void                ft_data(int fd);
+char				**my_split(char const *s, char c, char d);
+void        		ft_map(int fd);
+int					skip_line(const char *line);
+int					get_resolution(char **content);
+void				get_cl(int r, int g, int b);
+void				get_fl(int r, int g, int b);
+int					get_rgb(int index, const char *str);
+int					get_path(int index, const char *str);
+void				ft_init(void);
+int					all_digit(const char *str);
+int					skip_line(const char *line);
+int					manip_line(const char *line);
+int					get_texture(char **content);
+void	cub3d(int nb_line, int max_len);
 
 #endif

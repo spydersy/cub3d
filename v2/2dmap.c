@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/30 16:21:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/16 00:55:27 by abelarif         ###   ########.fr       */
+/*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
+/*   Updated: 2020/11/16 01:48:10 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 // void	draw_wall(int x, int y)
 // {
-	// int			x_i;
-	// int			y_i;
-	// int			x_max;
-	// int			y_max;
+// 	int			x_i;
+// 	int			y_i;
+// 	int			x_max;
+// 	int			y_max;
 	
-	// x_i = x * 20;
-	// y_i = y * 20;
-	// x_max = x_i + 19;
-	// y_max = x_i + 19;
-	// while (x_i <= x_max)
-	// {
-		// // y_i = y * 20;
-		// while (y_i <= y_max)
-		// {
-			// if (!y_i || !x_i || !(y % 20)
-			// || !(x % 20) || !((y + 1) % 20) || !((x + 1) % 20))
-				// mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xffffff);
-			// y_i++;
-		// }
-		// x_i++;
-	// }
+// 	x_i = x * 20;
+// 	y_i = y * 20;
+// 	x_max = x_i + 19;
+// 	y_max = x_i + 19;
+// 	while (x_i <= x_max)
+// 	{
+// 		// y_i = y * 20;
+// 		while (y_i <= y_max)
+// 		{
+// 			if (!y_i || !x_i || !(y % 20)
+// 			|| !(x % 20) || !((y + 1) % 20) || !((x + 1) % 20))
+// 				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xffffff);
+// 			y_i++;
+// 		}
+// 		x_i++;
+// 	}
 // }
 
 void	draw_space(int x, int y)
@@ -160,8 +160,7 @@ void	draw_map(int y_max, int x_max)
 void	cub3d(int nb_line, int max_len)
 {
 	g_mlx.mlx = mlx_init();
-	g_mlx.win = mlx_new_window(g_mlx.mlx, 880, 280, "CUB3D");
+	g_mlx.win = mlx_new_window(g_mlx.mlx, max_len * 20, nb_line * 20, "CUB3D");
 	draw_map(nb_line, max_len);
 	mlx_loop(g_mlx.mlx);
 }
-

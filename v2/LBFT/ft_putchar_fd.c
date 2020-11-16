@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/11 07:58:59 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/14 19:45:07 by abelarif         ###   ########.fr       */
+/*   Created: 2020/01/09 13:08:43 by abelarif          #+#    #+#             */
+/*   Updated: 2020/01/10 18:36:46 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-// int		main()
-// {
-	// int		fd = open("map.cub", O_RDONLY);
-	// char	*line;
-
-	// while (get_next_line(fd, &line))
-	// {
-		// printf(">>%s<<\n", line);
-	// }	
-	// return (0);
-// }
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

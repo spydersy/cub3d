@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/11 07:58:59 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/14 19:45:07 by abelarif         ###   ########.fr       */
+/*   Created: 2020/01/09 13:07:42 by abelarif          #+#    #+#             */
+/*   Updated: 2020/01/09 13:08:23 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-// int		main()
-// {
-	// int		fd = open("map.cub", O_RDONLY);
-	// char	*line;
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*p;
+	unsigned char	l;
+	unsigned long	i;
 
-	// while (get_next_line(fd, &line))
-	// {
-		// printf(">>%s<<\n", line);
-	// }	
-	// return (0);
-// }
+	i = 0;
+	p = b;
+	l = c;
+	while (i < len)
+	{
+		p[i] = l;
+		i++;
+	}
+	return (p);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:09:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/12 07:06:05 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/14 22:32:00 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	check_horizontal(int x, int y, int y_max)
 	&& g_map[y - 1][x] != 'E' && g_map[y - 1][x] != 'S'
 	&& g_map[y - 1][x] != 'W')
 	{
-		printf ("to check   : >>%c<<\n", g_map[y][x]);
-		printf ("check with : >>%c<<\n", g_map[y - 1][x]);
-		// printf(">>%s<<\n", g_map[y]);
-		// printf(">>%d, %d<<\n", y, x);
+		printf ("to check   : >>%d<<\n", g_map[y][x]);
+		printf ("check with : >>%d<<\n", g_map[y - 1][x]);
+		printf(">>%s<<\n", g_map[y]);
+		printf(">>%d, %d<<\n", y, x);
 		ft_error("+++++++++++++++++++++");
 	}
 	else if (g_map[y + 1][x] != '0' && g_map[y + 1][x] != '1'
@@ -42,9 +42,9 @@ void	check_horizontal(int x, int y, int y_max)
 	&& g_map[y + 1][x] != 'E' && g_map[y + 1][x] != 'S'
 	&& g_map[y + 1][x] != 'W')
 	{
-		// printf(">>%s<<\n", g_map[y]);
-		// printf(">>%d, %d<<\n", y, x);
-		ft_error("---------------------");
+		printf(">>%s<<\n", g_map[y]);
+		printf(">>%d, %d<<\n", y, x);
+		ft_error("---------------------0");
 	}
 }
 
@@ -57,6 +57,13 @@ void	horizontal_map(int y_max)
 
 	y = -1;
 	check_char = "02ENSW";
+	/*START*/
+	int	j = 0;
+	while (g_map[j])
+	{
+		printf("g_map : >>%s<<\n", g_map[j++]);
+	}
+	/* END */
 	while (g_map[++y])
 	{
 		x = -1;

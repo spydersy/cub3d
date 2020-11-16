@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 20:18:43 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/15 12:59:40 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/14 22:25:53 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # include "../LBFT/libft.h"
 
-#define BUFFER_SIZE 100
+#define BUFFER_SIZE 1
 
 int		get_next_line(int fd, char **line);
 int		ft_checkvalue(int read_value, char **line, char *rest, char *buf);
