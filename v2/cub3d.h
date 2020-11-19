@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/18 03:28:55 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/19 02:25:33 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,21 @@ typedef struct	s_mlx
 	void		*win;
 }				t_mlx;
 
+typedef struct  s_img
+{
+    void        *img;
+    char        *addr;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
+}               t_img;
 
 char			**g_map;
 t_player		g_player;
 t_data			g_data;
 t_liste			*g_liste;
 t_mlx			g_mlx;
+t_img			img;
 int				nb_line;
 int				max_len;
 
