@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/19 04:20:32 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/19 18:54:31 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	draw_space(int x, int y)
 	y_i = y * 20;
 	x_max  = x_i + 20;
 	y_max  = y_i + 20;
-	while (x_i <= x_max)
+	while (x_i <= x_max && x_i < max_len * 20)
 	{
 		y_i = y * 20;
-		while (y_i <= y_max)
+		while (y_i <= y_max && y_i < nb_line * 20)
 		{
 			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
 			{
@@ -69,10 +69,10 @@ void	draw_player(int x, int y)
 	y_i = y * 20;
 	x_max  = x_i + 20;
 	y_max  = y_i + 20;
-	while (x_i <= x_max)
+	while (x_i <= x_max && x_i < max_len * 20)
 	{
 		y_i = y * 20;
-		while (y_i <= y_max)
+		while (y_i <= y_max && y_i < nb_line * 20)
 		{
 			// draw_direction(x_i, y_i);
 			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
@@ -112,15 +112,15 @@ void	draw_wall(int x, int y)
 	y_i = y * 20;
 	x_max  = x_i + 20;
 	y_max  = y_i + 20;
-	while (x_i <= x_max)
+	while (x_i <= x_max && x_i < max_len * 20)
 	{
 		y_i = y * 20;
-		while (y_i <= y_max)
+		while (y_i <= y_max && y_i < nb_line * 20)
 		{
 			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
 			{
 				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x000000);
-				printf("WALL00\n");
+				// printf("WALL00\n");
 				my_mlx_pixel_put(&img, x_i, y_i, 0x000000);
 			}
 			else
@@ -136,6 +136,48 @@ void	draw_wall(int x, int y)
 	}
 }
 
+void	draw_background(int x, int y)
+{
+	int		x_i;
+	int		y_i;
+	int		x_max;
+	int		y_max;
+
+	x_i = x * 20;
+	y_i = y * 20;
+	x_max  = x_i + 20;
+	y_max  = y_i + 20;
+	while (x_i <= x_max && x_i < max_len * 20)
+	{
+		y_i = y * 20;
+		while (y_i <= y_max && y_i < nb_line * 20)
+		{
+			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xf8ff6b);
+			my_mlx_pixel_put(&img, x_i, y_i, 0xf8ff6b);
+			y_i++;
+		}
+		x_i++;
+	}
+}
+
+// void	background(int nb_line, int max_len)
+// {
+	// int		i;
+	// int		j;
+
+	// j = -1;
+	// i = -1;
+	// while (++j <= max_len * 20)
+	// {
+		// i = -1;
+		// while (++i <= nb_line * 20)
+		// {
+			// // mlx_pixel_put(g_mlx.mlx, g_mlx.win, j, i, 0xf8ff6b);
+			// my_mlx_pixel_put(&img, j, i, 0xf8ff6b);
+		// }
+	// }
+// }
+
 void	draw(int index, int x, int y)
 {
 	if (index == 1)
@@ -150,23 +192,9 @@ void	draw(int index, int x, int y)
 	{
 		draw_player(x, y);
 	}
-}
-
-void	background(int nb_line, int max_len)
-{
-	int		i;
-	int		j;
-
-	j = -1;
-	i = -1;
-	while (++j <= max_len * 20)
+	else if (index == 4)
 	{
-		i = -1;
-		while (++i <= nb_line * 20)
-		{
-			mlx_pixel_put(g_mlx.mlx, g_mlx.win, j, i, 0xf8ff6b);
-			my_mlx_pixel_put(&img, j, i, 0xf8ff6b);
-		}
+		draw_background(x, y);
 	}
 }
 
@@ -179,7 +207,7 @@ void	draw_map(int y_max, int x_max)
 	img.img = mlx_new_image(g_mlx.mlx, max_len * 20, 20 * nb_line);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
-	background(y_max, x_max);
+	// background(y_max, x_max);
 	y = -1;
 	while (++y < y_max)
 	{
@@ -188,6 +216,10 @@ void	draw_map(int y_max, int x_max)
 		{
 			if (g_map[y][x] == '1')
 				draw(1, x, y);
+			else if (g_map[y][x] == ' ')
+			{
+				draw(4, x, y);
+			}
 			else if (g_map[y][x] == '0' || g_map[y][x] == '2' || (ft_isalpha(g_map[y][x]) && !first))
 				draw(2, x, y);
 			else if (ft_isalpha(g_map[y][x]))
@@ -204,7 +236,7 @@ void	ft_move_v(int direction)
 	int		i;
 	int		j;
 	
-	g_player.y = g_player.y + (direction * 2);
+	g_player.y = g_player.y + (direction * 4);
 
 	i = g_player.x - 3;
 	j = g_player.y - 3;
@@ -242,7 +274,7 @@ void	ft_move_h(int direction)
 	int		i;
 	int		j;
 	
-	g_player.x = g_player.x + (direction * 2);
+	g_player.x = g_player.x + (direction * 4);
 
 	i = g_player.x - 3;
 	j = g_player.y - 3;
@@ -320,6 +352,7 @@ void	cub3d(int nb_line, int max_len)
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 	mlx_key_hook(g_mlx.win, ft_key, (void*)0);
 	mlx_hook(g_mlx.win, 2, 1L<<0, ft_key, (void*)0);
+	mlx_expose_hook(g_mlx.win, ft_key, (void*)0);
 	// mlx_expose_hook(g_mlx.win, ft_key, (void*)0);
 	mlx_loop(g_mlx.mlx);
 }
