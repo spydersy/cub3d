@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:48:07 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/21 11:49:06 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/23 13:33:12 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 #define DDA_ALGORITHM_H
 
 #include <stdio.h>
-#include "../mlx.h"
+#include "mlx.h"
 
 #endif
