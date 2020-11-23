@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/23 13:21:49 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/23 20:26:10 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,23 @@ void	ft_move_v(int direction)
 			i++;
 		}
 
+	}
+	printf("or : %d\n", g_player.oreintation);
+	if (g_player.oreintation == 1)
+	{
+		// int		r = -1;
+		// float	angle = (g_data.resolution[0] * PI) / 12;
+		// float	nangle = angle * (-1);
+		// while (++r < g_data.resolution[0])
+		// {
+			i = g_player.y + 1;
+			while (--i >= g_player.y - 10)
+			{
+				printf("N");
+				mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x ,  i, 0xFF0000);
+			}
+			printf("\n");
+		// }
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/23 14:40:41 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/23 18:14:13 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #include "./GNL/get_next_line.h"
 #include "./LBFT/libft.h"
 #include "mlx.h"
+
+#define PI 3.141593
 
 typedef struct	s_data
 {
