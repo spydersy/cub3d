@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/25 10:04:43 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/25 11:18:21 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,20 +271,23 @@ void	ft_move_v(int direction)
 			int							inter;
 
 			inter = 0;
+			// float		teta;
+
+			// teta = -1 * PI / 12;
 			i = g_player.y + 1;
 			while (inter == 0)
 			{
 				i--;
 				if (g_map[i / 20][g_player.x / 20] == '0' || g_map[i / 20][g_player.x / 20] == '2' || ft_isalpha(g_map[i / 20][g_player.x / 20]))
 				{
-					mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x ,  i, 0xFF0000);
+					mlx_pixel_put(g_mlx.mlx, g_mlx.win,g_player.x, i, 0xFF0000);
 				}
 				else
 				{
 					inter = 1;
 				}
 			}
-			printf("\nDISTANCE : %f\n", distance(g_player.x, g_player.y, g_player.x, i));
+			printf("\nDISTANCE R : %f\n", distance(g_player.x, g_player.y, g_player.x, i));
 		// }
 	}
 }
@@ -327,7 +330,35 @@ void	ft_move_h(int direction)
 			}
 			i++;
 		}
+	}
+	if (g_player.oreintation == 1)
+	{
+		// int		r = -1;
+		// float	angle = (g_data.resolution[0] * PI) / 12;
+		// float	nangle = angle * (-1);
+		// while (++r < g_data.resolution[0])
+		// {
+			int							inter;
 
+			inter = 0;
+			// float		teta;
+
+			// teta = -1 * PI / 12;
+			i = g_player.y + 1;
+			while (inter == 0)
+			{
+				i--;
+				if (g_map[i / 20][g_player.x / 20] == '0' || g_map[i / 20][g_player.x / 20] == '2' || ft_isalpha(g_map[i / 20][g_player.x / 20]))
+				{
+					mlx_pixel_put(g_mlx.mlx, g_mlx.win,g_player.x, i, 0xFF0000);
+				}
+				else
+				{
+					inter = 1;
+				}
+			}
+			printf("\nDISTANCE : %f\n", distance(g_player.x, g_player.y, g_player.x, i));
+		// }
 	}
 }
 
