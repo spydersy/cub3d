@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/25 11:18:21 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/25 12:12:39 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,9 +271,6 @@ void	ft_move_v(int direction)
 			int							inter;
 
 			inter = 0;
-			// float		teta;
-
-			// teta = -1 * PI / 12;
 			i = g_player.y + 1;
 			while (inter == 0)
 			{
@@ -333,32 +330,36 @@ void	ft_move_h(int direction)
 	}
 	if (g_player.oreintation == 1)
 	{
-		// int		r = -1;
-		// float	angle = (g_data.resolution[0] * PI) / 12;
-		// float	nangle = angle * (-1);
-		// while (++r < g_data.resolution[0])
-		// {
-			int							inter;
+			int							inter1;
+			int							inter2;
+			float						teta;
 
-			inter = 0;
-			// float		teta;
-
-			// teta = -1 * PI / 12;
+			inter1 = 0;
+			inter1 = 0;
+			teta = (-15 * PI) / 180;
 			i = g_player.y + 1;
-			while (inter == 0)
+			while (!(inter1 == 0 && inter2 == 0))
 			{
 				i--;
-				if (g_map[i / 20][g_player.x / 20] == '0' || g_map[i / 20][g_player.x / 20] == '2' || ft_isalpha(g_map[i / 20][g_player.x / 20]))
+				if ((g_map[i / 20][g_player.x / 20] == '0' || g_map[i / 20][g_player.x / 20] == '2' || ft_isalpha(g_map[i / 20][g_player.x / 20])) && (inter1 == 0))
 				{
 					mlx_pixel_put(g_mlx.mlx, g_mlx.win,g_player.x, i, 0xFF0000);
 				}
 				else
 				{
-					inter = 1;
+					inter1 = 1;
 				}
+				if ((g_map[(int)(i * cos(teta) + g_player.x * sin(teta)) / 20][(int)(g_player.x * cos(teta) - i * sin(teta)) / 20] == '0' || g_map[(int)(i * cos(teta) + g_player.x * sin(teta)) / 20][(int)(g_player.x * cos(teta) - i * sin(teta)) / 20] == '2' || ft_isalpha(g_map[(int)(i * cos(teta) + g_player.x * sin(teta)) / 20][(int)(g_player.x * cos(teta) - i * sin(teta)) / 20])) && (inter2 == 0))
+				{
+					mlx_pixel_put(g_mlx.mlx, g_mlx.win, (int)(g_player.x * cos(teta) - i * sin(teta)), (int)(i * cos(teta) + g_player.x * sin(teta)), 0x0000FF);
+				}
+				else
+				{
+					inter2  = 1;
+				}
+				
 			}
 			printf("\nDISTANCE : %f\n", distance(g_player.x, g_player.y, g_player.x, i));
-		// }
 	}
 }
 
