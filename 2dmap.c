@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/23 20:26:10 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/25 10:04:43 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ void            my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
     dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
     *(unsigned int*)dst = color;
+}
+
+float	distance(int x0, int y0, int x1, int y1)
+{
+	float		distance;
+
+	distance = sqrtf((x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1));
+	return (distance);
 }
 
 void	draw_space(int x, int y)
@@ -252,9 +260,7 @@ void	ft_move_v(int direction)
 			}
 			i++;
 		}
-
 	}
-	printf("or : %d\n", g_player.oreintation);
 	if (g_player.oreintation == 1)
 	{
 		// int		r = -1;
@@ -262,13 +268,23 @@ void	ft_move_v(int direction)
 		// float	nangle = angle * (-1);
 		// while (++r < g_data.resolution[0])
 		// {
+			int							inter;
+
+			inter = 0;
 			i = g_player.y + 1;
-			while (--i >= g_player.y - 10)
+			while (inter == 0)
 			{
-				printf("N");
-				mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x ,  i, 0xFF0000);
+				i--;
+				if (g_map[i / 20][g_player.x / 20] == '0' || g_map[i / 20][g_player.x / 20] == '2' || ft_isalpha(g_map[i / 20][g_player.x / 20]))
+				{
+					mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x ,  i, 0xFF0000);
+				}
+				else
+				{
+					inter = 1;
+				}
 			}
-			printf("\n");
+			printf("\nDISTANCE : %f\n", distance(g_player.x, g_player.y, g_player.x, i));
 		// }
 	}
 }
@@ -321,29 +337,37 @@ int		ft_key(int key,  void *param)
 	{
 		
 	}
-	if (key == 0) //A linex = 97; A macos = 0
+	if (key == 97) //A linex = 97; A macos = 0
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(-1);
 	}
-	else if (key == 2) //D linux = 100; A macos = 2
+	else if (key == 100) //D linux = 100; A macos = 2
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(1);
 	}
-	else if (key == 13) //W linux = 119; W macos = 13
+	else if (key == 119) //W linux = 119; W macos = 13
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(-1);
 	}
-	else if (key == 1) //S linux = 115; Smacos = 1
+	else if (key == 115) //S linux = 115; Smacos = 1
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(1);
+	}
+	else if (key == 65361)	//- linux = 65361;
+	{
+		
+	}
+	else if (key == 65363)	//+ linux = 65363;
+	{
+		
 	}
 	return (1);
 }
