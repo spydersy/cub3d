@@ -23,7 +23,7 @@
 #include "./link.h"
 #include "./GNL/get_next_line.h"
 #include "./LBFT/libft.h"
-#include "mlx.h"
+#include "../mlx.h"
 
 typedef struct	s_data
 {
