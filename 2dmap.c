@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/28 12:45:58 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/28 13:49:12 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,16 +289,24 @@ int		ft_key(int key,  void *param)
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(1);
 	}
-		int		step = -31;
-		float	teta = PI / (3 * g_data.resolution[0]);
-		
-		while (++i <= 60)
-		{
-			dda(g_player.x,
-			g_player.y,
-			(int)(g_player.x + cosf(g_player.rotation) * 100000000),
-			(int)(g_player.y + sinf(g_player.rotation) * 100000000));
-		}
+	
+	int		step = 0;
+	float	old_angle = g_player.rotation;
+
+	float	teta = PI / (3 * g_data.resolution[0]);
+	g_player.rotation = g_player.rotation - teta * 30;
+	
+	// int		btata = 0;
+	g_data.resolution[0] = 5000;
+	while (++step <= g_data.resolution[0])
+	{
+		dda(g_player.x,
+		g_player.y,
+		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
+		(int)(g_player.y + sinf(g_player.rotation) * 100000000));
+		g_player.rotation = g_player.rotation + teta;
+	}
+	g_player.rotation = old_angle;
 	return (1);
 }
 
