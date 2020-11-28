@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:37:18 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/16 00:38:37 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/28 09:55:01 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_init(void)
 	g_data.resolution[1] = -1;
 	g_player.x = -1;
 	g_player.y = -1;
-	g_player.oreintation = 0;
+	g_player.rotation = 0;
 }
 
 int		all_digit(const char *str)

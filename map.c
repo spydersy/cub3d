@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 18:04:54 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/18 03:29:15 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/28 10:53:46 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ void		check_horizontal(int x, int y, int y_max)
 
 void		get_player(char orientation, int x, int y)
 {
-	if (g_player.oreintation)
+	if (g_player.rotation)
 		ft_error("Multiple definition of Player\n");
 	g_player.x = x;
 	g_player.y = y;
 	if (orientation == 'N')
-		g_player.oreintation = 1;
+		g_player.rotation = 1;
 	else if (orientation == 'S')
-		g_player.oreintation = 2;
+		g_player.rotation = - (7 * PI / 8);
 	else if (orientation == 'E')
-		g_player.oreintation = 3;
+		g_player.rotation = 3;
 	else if (orientation == 'W')
-		g_player.oreintation = 4;
+		g_player.rotation = 4;
 }
 
 void		bef_aft(char check_char, const char *line, int nb_line, int i)

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/25 10:34:29 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/28 10:26:44 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef	struct	s_player
 {
 	int			x;
 	int			y;
-	int			oreintation;
+	float		rotation;
 }				t_player;
 
 typedef struct	s_mlx
@@ -71,6 +71,7 @@ int				nb_line;
 int				max_len;
 
 void                ft_error (char *str);
+void				dda(int x0, int y0,  int x1, int y1);
 int                 max_of(int i, int j);
 void                ft_data(int fd);
 char				**my_split(char const *s, char c, char d);
