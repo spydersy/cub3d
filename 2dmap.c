@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/28 10:46:32 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/28 12:45:58 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,85 +223,24 @@ void	draw_map(int y_max, int x_max)
 
 void	ft_move_v(int direction)
 {
-	int		i;
-	int		j;
-	
 	g_player.y = g_player.y + (direction * 4);
 
 	if ((g_map[g_player.y / 20][g_player.x / 20] == '1' || g_map[g_player.y / 20][g_player.x / 20] == ' '))
 	{
 		g_player.y = g_player.y - (direction * 4);
 	}
-
-	i = g_player.x - 3;
-	j = g_player.y - 3;
-	if (direction < 0)
-	{
-		while (i <= g_player.x + 2)
-		{
-			j = g_player.y - 3;
-			while (j <= g_player.y +2)
-			{
-				mlx_pixel_put(g_mlx.mlx, g_mlx.win, i, j, 0xFF0000);
-				j++;
-			}
-			i++;
-		}
-	}
-	else
-	{
-			while (i <= g_player.x + 2)
-		{
-			j = g_player.y - 3;
-			while (j <= g_player.y +2)
-			{
-				mlx_pixel_put(g_mlx.mlx, g_mlx.win, i, j, 0xFF0000);
-				j++;
-			}
-			i++;
-		}
-	}
+	mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
 void	ft_move_h(int direction)
 {
-	int		i;
-	int		j;
-	
 	g_player.x = g_player.x + (direction * 4);
 
 	if ((g_map[g_player.y / 20][g_player.x / 20] == '1' || g_map[g_player.y / 20][g_player.x / 20] == ' '))
 	{
 		g_player.x = g_player.x - (direction * 4);
 	}
-	i = g_player.x - 3;
-	j = g_player.y - 3;
-	if (direction < 0)
-	{
-		while (i <= g_player.x + 2)
-		{
-			j = g_player.y - 3;
-			while (j <= g_player.y +2)
-			{
-				mlx_pixel_put(g_mlx.mlx, g_mlx.win, i, j, 0xFF0000);
-				j++;
-			}
-			i++;
-		}
-	}
-	else
-	{
-			while (i <= g_player.x + 2)
-		{
-			j = g_player.y - 3;
-			while (j <= g_player.y +2)
-			{
-				mlx_pixel_put(g_mlx.mlx, g_mlx.win, i, j, 0xFF0000);
-				j++;
-			}
-			i++;
-		}
-	}
+	mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
 int		ft_key(int key,  void *param)
@@ -310,6 +249,22 @@ int		ft_key(int key,  void *param)
 	{
 		
 	}
+	
+	if (key == 65361)	//- linux = 65361;
+	{
+		mlx_clear_window(g_mlx.mlx, g_mlx.win);
+		ft_move_h(0);
+		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
+		g_player.rotation = g_player.rotation  - (PI / 100);
+	}
+	else if (key == 65363)	//+ linux = 65363;
+	{
+		mlx_clear_window(g_mlx.mlx, g_mlx.win);
+		ft_move_h(0);
+		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
+		g_player.rotation = g_player.rotation  + (PI / 100);
+	}
+
 	if (key == 97) //A linex = 97; A macos = 0
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
@@ -334,21 +289,16 @@ int		ft_key(int key,  void *param)
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(1);
 	}
-	else if (key == 65361)	//- linux = 65361;
-	{
+		int		step = -31;
+		float	teta = PI / (3 * g_data.resolution[0]);
 		
-	}
-	else if (key == 65363)	//+ linux = 65363;
-	{
-		
-	}
-	printf("00 : %ld\n", random());
-		// mlx_clear_window(g_mlx.win, g_mlx.win);
-		dda(g_player.x,
-		g_player.y,
-		(int)(g_player.x + cosf(g_player.rotation) * 50),
-		(int)(g_player.y + sinf(g_player.rotation) * 50));
-		printf("01 : %ld\n", random());
+		while (++i <= 60)
+		{
+			dda(g_player.x,
+			g_player.y,
+			(int)(g_player.x + cosf(g_player.rotation) * 100000000),
+			(int)(g_player.y + sinf(g_player.rotation) * 100000000));
+		}
 	return (1);
 }
 

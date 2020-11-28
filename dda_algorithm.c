@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:49:10 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/28 10:41:38 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/28 12:37:00 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,20 @@ void	dda(int x0, int y0,  int x1, int y1)
 	float y = y0;
 
 	int		i  = 0;
-	printf("***********************************************************\n");
 	while (i <= step)
 	{
-		mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, 0xff0000);
-		printf("(x, y) = (%f, %f)\n", x, y);
-		x += xi;
-		y += yi;
-		i++;
+		if (g_map[(int)y / 20][(int)x / 20] == '1' || g_map[(int)y / 20][(int)x / 20] == ' ')
+		{
+			break;
+		}
+		else
+		{
+			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, 0xff0000);
+			x += xi;
+			y += yi;
+			i++;
+		}
 	}
-	printf("***********************************************************\n");
 }
 
 // int		main(int argc, char *argv[])
