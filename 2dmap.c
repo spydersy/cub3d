@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/28 13:49:12 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/29 05:47:58 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*
-	N
-W		E
-	S
-*/
 
 void            my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
@@ -82,7 +76,6 @@ void	draw_player(int x, int y)
 		y_i = y * 20;
 		while (y_i <= y_max && y_i < nb_line * 20)
 		{
-			// draw_direction(x_i, y_i);
 			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
 			{
 				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x000000);
@@ -102,7 +95,6 @@ void	draw_player(int x, int y)
 					mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x49979d);
 					my_mlx_pixel_put(&img, x_i, y_i, 0x49979d);
 			}
-			// printf("y:%6d y_max:%6d x:%6d x_max: %6d\n", y_i, y_max, x_i, x_max);
 			y_i++;
 		}
 		x_i++;
@@ -128,16 +120,13 @@ void	draw_wall(int x, int y)
 			if (!y_i || !x_i || !(x_i % 20) || !(y_i % 20) || !((x_i + 1) % 20) || !((y_i + 1) % 20))
 			{
 				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0x000000);
-				// printf("WALL00\n");
 				my_mlx_pixel_put(&img, x_i, y_i, 0x000000);
 			}
 			else
 			{
 				mlx_pixel_put(g_mlx.mlx, g_mlx.win, x_i, y_i, 0xffffff);
-				// printf("WALL01\n");
 				my_mlx_pixel_put(&img, x_i, y_i, 0xffffff);
 			}
-			// printf("y:%6d y_max:%6d x:%6d x_max: %6d\n", y_i, y_max, x_i, x_max);
 			y_i++;
 		}
 		x_i++;
@@ -197,7 +186,6 @@ void	draw_map(int y_max, int x_max)
 	img.img = mlx_new_image(g_mlx.mlx, max_len * 20, 20 * nb_line);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
-	// background(y_max, x_max);
 	y = -1;
 	while (++y < y_max)
 	{
@@ -245,68 +233,80 @@ void	ft_move_h(int direction)
 
 int		ft_key(int key,  void *param)
 {
+	printf("\nangle : %f\n", g_player.rotation);
+	printf("(x, y) : (%d, %d)\n\n", g_player.x, g_player.y);
 	if (param)
 	{
 		
 	}
 	
-	if (key == 65361)	//- linux = 65361;
+	if (key == 123)	//- linux = 65361, macos 123;
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
-		ft_move_h(0);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
-		g_player.rotation = g_player.rotation  - (PI / 100);
+		g_player.rotation = g_player.rotation  - PI / 70;
 	}
-	else if (key == 65363)	//+ linux = 65363;
+	else if (key == 124)	//+ linux = 65363, macos 124;
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
-		ft_move_h(0);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
-		g_player.rotation = g_player.rotation  + (PI / 100);
+		g_player.rotation = (g_player.rotation  + PI / 70);
 	}
 
-	if (key == 97) //A linex = 97; A macos = 0
+	if (key == 0) //A linex = 97; A macos = 0
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(-1);
 	}
-	else if (key == 100) //D linux = 100; A macos = 2
+	else if (key == 2) //D linux = 100; A macos = 2
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(1);
 	}
-	else if (key == 119) //W linux = 119; W macos = 13
+	else if (key == 13) //W linux = 119; W macos = 13
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(-1);
 	}
-	else if (key == 115) //S linux = 115; Smacos = 1
+	else if (key == 1) //S linux = 115; Smacos = 1
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(1);
 	}
-	
-	int		step = 0;
+
+	int		step = -1;
 	float	old_angle = g_player.rotation;
 
 	float	teta = PI / (3 * g_data.resolution[0]);
-	g_player.rotation = g_player.rotation - teta * 30;
 	
-	// int		btata = 0;
-	g_data.resolution[0] = 5000;
-	while (++step <= g_data.resolution[0])
+	g_data.resolution[0] = 1000;
+	while (++step < g_data.resolution[0] / 2)
 	{
+		g_player.rotation = g_player.rotation - teta;
 		dda(g_player.x,
 		g_player.y,
 		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
-		(int)(g_player.y + sinf(g_player.rotation) * 100000000));
+		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
+	}
+	step = 0;
+	g_player.rotation = old_angle;
+	while (++step < g_data.resolution[0] / 2)
+	{
 		g_player.rotation = g_player.rotation + teta;
+		dda(g_player.x,
+		g_player.y,
+		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
+		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
 	}
 	g_player.rotation = old_angle;
+	dda(g_player.x,
+		g_player.y,
+		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
+		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0xff0000);
 	return (1);
 }
 
@@ -319,7 +319,6 @@ void	cub3d(int nb_line, int max_len)
 	mlx_key_hook(g_mlx.win, ft_key, (void*)0);
 	mlx_hook(g_mlx.win, 2, 1L<<0, ft_key, (void*)0);
 	mlx_expose_hook(g_mlx.win, ft_key, (void*)0);
-	// mlx_expose_hook(g_mlx.win, ft_key, (void*)0);
 	mlx_loop(g_mlx.mlx);
 }
 

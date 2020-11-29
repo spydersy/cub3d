@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/28 10:26:44 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/29 02:52:36 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 #include "./link.h"
 #include "./GNL/get_next_line.h"
 #include "./LBFT/libft.h"
-#include "../mlx.h"
+#include "mlx.h"
 
-#define PI 3.142857
+#define PI 3.14159265359
 typedef struct	s_data
 {
 	int			resolution[2];
@@ -71,7 +71,7 @@ int				nb_line;
 int				max_len;
 
 void                ft_error (char *str);
-void				dda(int x0, int y0,  int x1, int y1);
+void				dda(int x0, int y0,  int x1, int y1, int color);
 int                 max_of(int i, int j);
 void                ft_data(int fd);
 char				**my_split(char const *s, char c, char d);

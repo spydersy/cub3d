@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   teta.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:19:35 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/27 12:26:36 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/29 02:52:45 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 // #include <math.h>
 // #include "../mlx.h"
 
-// #define PI 3.142857
+// #define PI 3.14159265359
 
 // int			main()
 // {

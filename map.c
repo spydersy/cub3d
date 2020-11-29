@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 18:04:54 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/28 10:53:46 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/29 04:15:20 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void		get_player(char orientation, int x, int y)
 	g_player.x = x;
 	g_player.y = y;
 	if (orientation == 'N')
-		g_player.rotation = 1;
+		g_player.rotation = - (PI / 2);
 	else if (orientation == 'S')
-		g_player.rotation = - (7 * PI / 8);
+		g_player.rotation = PI / 2;
 	else if (orientation == 'E')
-		g_player.rotation = 3;
+		g_player.rotation = 0;
 	else if (orientation == 'W')
-		g_player.rotation = 4;
+		g_player.rotation = PI;
 }
 
 void		bef_aft(char check_char, const char *line, int nb_line, int i)
