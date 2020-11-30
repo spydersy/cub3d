@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/29 02:52:36 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/30 04:56:45 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #include "./GNL/get_next_line.h"
 #include "./LBFT/libft.h"
 #include "mlx.h"
+
+int		ddai;
 
 #define PI 3.14159265359
 typedef struct	s_data
@@ -70,6 +72,7 @@ t_img			img;
 int				nb_line;
 int				max_len;
 
+int					vabs(int i);
 void                ft_error (char *str);
 void				dda(int x0, int y0,  int x1, int y1, int color);
 int                 max_of(int i, int j);

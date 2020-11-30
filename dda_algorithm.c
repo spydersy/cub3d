@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:49:10 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/29 02:27:38 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/11/30 04:55:30 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 	{
 		if (g_map[(int)y / 20][(int)x / 20] == '1' || g_map[(int)y / 20][(int)x / 20] == ' ')
 		{
+			ddai++;
 			break;
 		}
 		else
