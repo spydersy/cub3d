@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:49:10 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/30 04:55:30 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/01 06:11:54 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,18 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 	int		i  = 0;
 	while (i <= step)
 	{
-		if (g_map[(int)y / 20][(int)x / 20] == '1' || g_map[(int)y / 20][(int)x / 20] == ' ')
-		{
-			ddai++;
-			break;
-		}
-		else
+		if (!(int)y || !(int)x || !((int)x % 20) || !((int)y % 20) || !(((int)x + 1) % 20) || !(((int)y + 1) % 20))
 		{
 			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, color);
+		
+			if (g_map[(int)y / 20][(int)x / 20] == '1' || g_map[(int)y / 20][(int)x / 20] == ' ')
+			{
+				ddai++;
+				break;
+			}
+		}
 			x += xi;
 			y += yi;
 			i++;
-		}
 	}
 }

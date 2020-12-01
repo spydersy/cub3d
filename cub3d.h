@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/30 04:56:45 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/01 04:35:43 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct	s_data
 
 typedef	struct	s_player
 {
-	int			x;
-	int			y;
+	float			x;
+	float			y;
 	float		rotation;
 }				t_player;
 
