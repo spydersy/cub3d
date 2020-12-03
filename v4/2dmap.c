@@ -1,12 +1,13 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/02 06:43:28 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/02 17:51:43 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,14 +262,14 @@ int		ft_key(int key,  void *param)
 		
 	}
 	
-	if (key == 123)	//- linux = 65361, macos 123; //rotation
+	if (key == 65361)	//- linux = 65361, macos 123; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		g_player.rotation = g_player.rotation  - PI / 100;
 		g_player.rotation = normalize(g_player.rotation);
 	}
-	else if (key == 124)	//+ linux = 65363, macos 124; //rotation
+	else if (key == 65363)	//+ linux = 65363, macos 124; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
@@ -276,28 +277,27 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = normalize(g_player.rotation);
 	}
 
-	if (key == 0) //A linex = 97; A macos = 0
+	if (key == 97) //A linex = 97; A macos = 0
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(-1);
 	}
-	else if (key == 2) //D linux = 100; A macos = 2
+	else if (key == 100) //D linux = 100; A macos = 2
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(1);
 	}
-	else if (key == 13) //W linux = 119; W macos = 13
+	else if (key == 119) //W linux = 119; W macos = 13
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(-1);
 	}
-	else if (key == 1) //S linux = 115; Smacos = 1
+	else if (key == 115) //S linux = 115; Smacos = 1
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
-		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(1);
 	}
 
@@ -317,53 +317,16 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = g_player.rotation + teta;
 	}
 	/* END */
-
-	// int		step = -1;
-	// float	old_angle = g_player.rotation;
-
-	// float	teta = PI / (3 * g_data.resolution[0]);
-	// // ddai = 0;
-	// g_player.rotation = g_player.rotation - teta * g_data.resolution[0];
-	// while (++step < g_data.resolution[0])
-	// {
-		// // ddai++;
-		// dda(g_player.x,
-		// g_player.y,
-		// (g_player.x + cosf(g_player.rotation) * 100000000),
-		// (g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000, step);
-		// g_player.rotation = g_player.rotation + teta;
-	// }
-	// g_player.rotation = old_angle;
-	// while (++step <= g_data.resolution[0])
-	// {
-		// // ddai++;
-
-		// g_player.rotation = g_player.rotation + teta;
-		// dda(g_player.x,
-		// g_player.y,
-		// (g_player.x + cosf(g_player.rotation) * 100000000),
-		// (g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000, g_data.resolution[0] / 2 - step);
-	// }
-	// dda(g_player.x,
-		// g_player.y,
-		// (g_player.x + cosf(g_player.rotation) * 100000000),
-		// (g_player.y + sinf(g_player.rotation) * 100000000), 0x00ff00,step);
 	g_player.rotation = old_angle;
-	// dda(g_player.x,
-	// 	g_player.y,
-	// 	(int)(g_player.x + cosf(g_player.rotation) * 100000000),
-	// 	(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000, step);
-	// printf("(x, y) (teta): (%f, %f) (%f)\n", g_player.x, g_player.y, g_player.rotation);
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
-
 	return (0);
 }
 
 void	cub3d(int nb_line, int max_len)
 {
 	g_mlx.mlx = mlx_init();
-	g_data.resolution[0] = 5120 / 2	;
-	g_data.resolution[1] = 2880 / 2	;
+	g_data.resolution[0] = 1000;
+	g_data.resolution[1] = 1000;
 	
 	if (nb_line && max_len)
 	{
