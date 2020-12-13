@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:49:10 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/02 20:34:24 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/13 01:31:34 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		vabs(int i)
+float		vabs(float i)
 {
 	return ((i >= 0) ? (i) : (i * (-1)));
 }
@@ -98,6 +98,8 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 				// else
 				// 	wcolor = 0xf5ce42;
 				dist = distance(g_player.x, g_player.y, x, y);
+				//dist = dist * cos(g_player.rotation);
+				dist = dist * cos(vabs(g_player.current - g_player.rotation));
 				build_wall(dist, col, wcolor);
 				break;
 			}

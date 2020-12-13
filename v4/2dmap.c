@@ -262,14 +262,14 @@ int		ft_key(int key,  void *param)
 		
 	}
 	
-	if (key == 65361)	//- linux = 65361, macos 123; //rotation
+	if (key == 123)	//- linux = 65361, macos 123; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		g_player.rotation = g_player.rotation  - PI / 100;
 		g_player.rotation = normalize(g_player.rotation);
 	}
-	else if (key == 65363)	//+ linux = 65363, macos 124; //rotation
+	else if (key == 124)	//+ linux = 65363, macos 124; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
@@ -277,36 +277,36 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = normalize(g_player.rotation);
 	}
 
-	if (key == 97) //A linex = 97; A macos = 0
+	if (key == 0) //A linex = 97; A macos = 0
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(-1);
 	}
-	else if (key == 100) //D linux = 100; A macos = 2
+	else if (key == 2) //D linux = 100; A macos = 2
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(1);
 	}
-	else if (key == 119) //W linux = 119; W macos = 13
+	else if (key == 13) //W linux = 119; W macos = 13
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		// mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(-1);
 	}
-	else if (key == 115) //S linux = 115; Smacos = 1
+	else if (key == 1) //S linux = 115; Smacos = 1
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		ft_move_v(1);
 	}
 
 	/*START*/
-		int		step = -1;
+	int		step = -1;
 	float	old_angle = g_player.rotation;
 
 	float	teta = PI / (3 * g_data.resolution[0]);
-	
+	g_player.current = old_angle;
 	g_player.rotation = g_player.rotation - PI / 6;
 	while (++step < g_data.resolution[0])
 	{

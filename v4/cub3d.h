@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/02 17:44:47 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/13 00:54:20 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 #include "./link.h"
 #include "./GNL/get_next_line.h"
 #include "./LBFT/libft.h"
-#include "../mlx.h"
+#include "mlx.h"
 
-int		ddai;
 
 #define PI 3.14159265359
 typedef struct	s_data
@@ -45,7 +44,8 @@ typedef	struct	s_player
 {
 	float			x;
 	float			y;
-	float		rotation;
+	float			current;
+	float			rotation;
 }				t_player;
 
 typedef struct	s_mlx
@@ -79,7 +79,7 @@ float				dist;
 
 void				my_mlx_pixel_put(t_img *data, int x, int y, int color);
 float				distance(float x0, float y0, float x1, float y1);
-int					vabs(int i);
+float				vabs(float i);
 void                ft_error (char *str);
 void				dda(float x0, float y0,  float x1, float y1, int color, int col);
 int                 max_of(int i, int j);
