@@ -291,8 +291,7 @@ void	ft_move_h(int direction)
 
 int		ft_key(int key,  void *param)
 {
-	printf("\nangle : %f\n", g_player.rotation);
-	printf("(x, y) : (%f, %f)\n\n", g_player.x, g_player.y);
+
 	if (param)
 	{
 		
@@ -345,8 +344,8 @@ int		ft_key(int key,  void *param)
 	float	teta = PI / (3 * g_data.resolution[0]);
 	
 	ddai = 0;
-	printf("fdda : %d\n", ddai);
-	
+
+	printf("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\n");
 	while (++step < g_data.resolution[0] / 2)
 	{
 		g_player.rotation = g_player.rotation - teta;
@@ -365,14 +364,8 @@ int		ft_key(int key,  void *param)
 		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
 		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
 	}
-	printf("dda : %d\n", ddai);
-	// if (ddai != 800)
-	// 	ft_error("dda\n");
+	printf("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n");
 	g_player.rotation = old_angle;
-	// dda(g_player.x,
-	// 	g_player.y,
-	// 	(int)(g_player.x + cosf(g_player.rotation) * 100000000),
-	// 	(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0x00ff00);
 	return (1);
 }
 

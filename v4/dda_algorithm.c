@@ -74,7 +74,47 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 	wcolor = 0xffffff;
 	while (i <= step)
 	{
-		if (!y || !x || !((int)x % 64) || !((int)y % 64) || !(((int)x + 1) % 64) || !(((int)y + 1) % 64))
+		if (!(((int)x + 1) % 64) && !(((int)y + 1) % 64) && (g_map[((int)y - 2) / 64][((int)x - 2) / 64] == '1' && g_map[((int)y + 2) / 64][((int)x + 2) / 64] == '1'))
+		{
+			printf("1\n");
+			wcolor = 0x000000;
+			// ft_error("1");
+			dist = distance(g_player.x, g_player.y, x, y);
+			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			build_wall(dist, col, wcolor);
+			break;
+		}
+		else if (!(((int)x) % 64) && !(((int)y + 1) % 64) && (g_map[((int)y - 2) / 64][((int)x + 2) / 64] == '1' && g_map[((int)y + 2) / 64][((int)x - 2) / 64] == '1'))
+		{
+			printf("2\n");
+			wcolor = 0x000000;
+			// ft_error("2");
+			dist = distance(g_player.x, g_player.y, x, y);
+			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			build_wall(dist, col, wcolor);
+			break;
+		}
+		else if (!(((int)x) % 64) && !(((int)y) % 64) && (g_map[((int)y - 2) / 64][((int)x + 2) / 64] == '1' && g_map[((int)y + 2) / 64][((int)x - 2) / 64] == '1'))
+		{
+			printf("3\n");
+			// ft_error("3");
+			wcolor = 0x000000;
+			dist = distance(g_player.x, g_player.y, x, y);
+			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			build_wall(dist, col, wcolor);
+			break;
+		}
+		else if (!(((int)x + 1) % 64) && !(((int)y) % 64) && (g_map[((int)y - 2) / 64][((int)x - 2) / 64] == '1' && g_map[((int)y + 2) / 64][((int)x + 2) / 64] == '1'))
+		{
+			printf("4\n");
+			// ft_error("4");
+			wcolor = 0x000000;
+			dist = distance(g_player.x, g_player.y, x, y);
+			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			build_wall(dist, col, wcolor);
+			break;
+		}
+		else if (!y || !x || !((int)x % 64) || !((int)y % 64) || !(((int)x + 1) % 64) || !(((int)y + 1) % 64))
 		{
 			if (g_map[(int)y / 64][(int)x / 64] == '1' || g_map[(int)y / 64][(int)x / 64] == ' ')
 			{
@@ -82,23 +122,19 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 				{
 					wcolor = 0x8934eb;
 				}
-				else if(!(((int)x + 1) % 64) && ((int)y % 64) && (((int)y + 1) % 64))
-				{
-					wcolor = 0xeb4034;
-				}
-				else if (!((int)y % 64) && ((int)x % 64) && (((int)x + 1) % 64))
+				if (!((int)y % 64) && ((int)x % 64) && (((int)x + 1) % 64))
 				{
 					wcolor = 0x34eb46;
 				}
-				else if(!(((int)y + 1) % 64) && ((int)x % 64) && (((int)x + 1) % 64))
+				if(!(((int)x + 1) % 64) && ((int)y % 64) && (((int)y + 1) % 64))
+				{
+					wcolor = 0xeb4034;
+				}
+				if(!(((int)y + 1) % 64) && ((int)x % 64) && (((int)x + 1) % 64))
 				{
 					wcolor = 0x34d0eb;
 				}
-
-				// else
-				// 	wcolor = 0xf5ce42;
 				dist = distance(g_player.x, g_player.y, x, y);
-				//dist = dist * cos(g_player.rotation);
 				dist = dist * cos(vabs(g_player.current - g_player.rotation));
 				build_wall(dist, col, wcolor);
 				break;

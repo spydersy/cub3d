@@ -240,7 +240,7 @@ void	ft_move_v(int direction)
 	g_player.x,
 	g_player.y,
 	(g_player.x + (direction * -1) * cosf(g_player.rotation) * 100000000),
-	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 10);
+	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 20);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -250,7 +250,7 @@ void	ft_move_h(int direction)
 	get_new_position(g_player.x,
 		g_player.y,
 		(g_player.x + (direction) * cosf(g_player.rotation + PI / 2) * 100000000),
-		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 10);
+		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 20);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -325,8 +325,8 @@ int		ft_key(int key,  void *param)
 void	cub3d(int nb_line, int max_len)
 {
 	g_mlx.mlx = mlx_init();
-	g_data.resolution[0] = 1000;
-	g_data.resolution[1] = 1000;
+	g_data.resolution[1] = 2880 / 2;
+	g_data.resolution[0] = 5120 / 2;
 	
 	if (nb_line && max_len)
 	{

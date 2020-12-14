@@ -39,10 +39,32 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 		
 			if (g_map[(int)y / 20][(int)x / 20] == '1' || g_map[(int)y / 20][(int)x / 20] == ' ')
 			{
-				ddai++;
 				break;
 			}
 		}
+		if (!(((int)x + 1) % 20) && !(((int)y + 1) % 20) && (g_map[((int)y - 2) / 20][((int)x - 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x + 2) / 20] == '1'))
+		{
+			ft_error("1");
+				printf("1\n");
+				break;
+		}
+		if (!(((int)x) % 20) && !(((int)y + 1) % 20) && (g_map[((int)y - 2) / 20][((int)x + 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x - 2) / 20] == '1'))
+		{
+			ft_error("2");
+				printf("2\n");
+				break;
+		}
+		if (!(((int)x) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x + 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x - 2) / 20] == '1'))
+		{
+				printf("4\n");
+				break;
+		}
+		if (!(((int)x + 1) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x - 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x + 2) / 20] == '1'))
+		{
+				printf("3\n");
+				break;
+		}
+
 			x += xi;
 			y += yi;
 			i++;
