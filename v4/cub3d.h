@@ -46,6 +46,7 @@ typedef	struct	s_player
 	float			y;
 	float			current;
 	float			rotation;
+	int				col;
 }				t_player;
 
 typedef struct	s_mlx

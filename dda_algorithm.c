@@ -33,9 +33,10 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 	int		i  = 0;
 	while (i <= step)
 	{
+			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, color);
+
 		if (!(int)y || !(int)x || !((int)x % 20) || !((int)y % 20) || !(((int)x + 1) % 20) || !(((int)y + 1) % 20))
 		{
-			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, color);
 		
 			if (g_map[(int)y / 20][(int)x / 20] == '1' || g_map[(int)y / 20][(int)x / 20] == ' ')
 			{

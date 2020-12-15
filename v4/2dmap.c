@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -240,7 +239,7 @@ void	ft_move_v(int direction)
 	g_player.x,
 	g_player.y,
 	(g_player.x + (direction * -1) * cosf(g_player.rotation) * 100000000),
-	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 20);
+	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 10);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -250,7 +249,7 @@ void	ft_move_h(int direction)
 	get_new_position(g_player.x,
 		g_player.y,
 		(g_player.x + (direction) * cosf(g_player.rotation + PI / 2) * 100000000),
-		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 20);
+		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 10);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -308,6 +307,7 @@ int		ft_key(int key,  void *param)
 	float	teta = PI / (3 * g_data.resolution[0]);
 	g_player.current = old_angle;
 	g_player.rotation = g_player.rotation - PI / 6;
+	printf("SSSSSSSSSSSSS\n");
 	while (++step < g_data.resolution[0])
 	{
 		dda(g_player.x,
@@ -317,6 +317,8 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = g_player.rotation + teta;
 	}
 	/* END */
+	printf("EEEEEEEEEEEEE\n");
+
 	g_player.rotation = old_angle;
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 	return (0);
@@ -325,8 +327,8 @@ int		ft_key(int key,  void *param)
 void	cub3d(int nb_line, int max_len)
 {
 	g_mlx.mlx = mlx_init();
-	g_data.resolution[1] = 2880 / 2;
-	g_data.resolution[0] = 5120 / 2;
+	g_data.resolution[0] = 1920;
+	g_data.resolution[1] = 1920;
 	
 	if (nb_line && max_len)
 	{

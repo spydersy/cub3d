@@ -345,26 +345,25 @@ int		ft_key(int key,  void *param)
 	
 	ddai = 0;
 
-	printf("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\n");
-	while (++step < g_data.resolution[0] / 2)
-	{
-		g_player.rotation = g_player.rotation - teta;
-		dda(g_player.x,
-		g_player.y,
-		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
-		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
-	}
+	// while (++step < g_data.resolution[0] / 2)
+	// {
+		// g_player.rotation = g_player.rotation - teta;
+		// dda(g_player.x,
+		// g_player.y,
+		// (int)(g_player.x + cosf(g_player.rotation) * 100000000),
+		// (int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
+	// }
 	step = 0;
 	g_player.rotation = old_angle;
-	while (++step <= g_data.resolution[0] / 2)
-	{
-		g_player.rotation = g_player.rotation + teta;
+	// while (++step <= g_data.resolution[0] / 2)
+	// {
+		// g_player.rotation = g_player.rotation + teta;
 		dda(g_player.x,
 		g_player.y,
 		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
 		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
-	}
-	printf("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n");
+	// }
+	// printf("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n");
 	g_player.rotation = old_angle;
 	return (1);
 }
