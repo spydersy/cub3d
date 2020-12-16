@@ -222,7 +222,5 @@ void		ft_map(int fd)
 	nb_line++;
 	check_line(line, nb_line);
 	insertion(g_liste, line);
-	printf("\nnb_line : %d\n", nb_line);
-	printf("max_len : %d\n\n", max_len);
 	map_2d(nb_line, max_len);
 }

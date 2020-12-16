@@ -239,7 +239,7 @@ void	ft_move_v(int direction)
 	g_player.x,
 	g_player.y,
 	(g_player.x + (direction * -1) * cosf(g_player.rotation) * 100000000),
-	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 10);
+	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 30);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -249,7 +249,7 @@ void	ft_move_h(int direction)
 	get_new_position(g_player.x,
 		g_player.y,
 		(g_player.x + (direction) * cosf(g_player.rotation + PI / 2) * 100000000),
-		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 10);
+		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 30);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -307,7 +307,6 @@ int		ft_key(int key,  void *param)
 	float	teta = PI / (3 * g_data.resolution[0]);
 	g_player.current = old_angle;
 	g_player.rotation = g_player.rotation - PI / 6;
-	printf("SSSSSSSSSSSSS\n");
 	while (++step < g_data.resolution[0])
 	{
 		dda(g_player.x,
@@ -317,23 +316,70 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = g_player.rotation + teta;
 	}
 	/* END */
-	printf("EEEEEEEEEEEEE\n");
 
 	g_player.rotation = old_angle;
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 	return (0);
 }
 
+void	init_text(void)
+{
+	int		size[2] = {128, 128};
+	t_mlx	mlx1;
+	mlx1.mlx = mlx_init();
+
+	g_txt1.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/N.xpm", &size[1], &size[0]);
+	g_txt1.addr = mlx_get_data_addr(g_txt1.img, &g_txt1.bits_per_pixel, &g_txt1.line_length, &g_txt1.endian);
+
+	g_txt2.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/S.xpm", &size[1], &size[0]);
+	g_txt2.addr = mlx_get_data_addr(g_txt2.img, &g_txt2.bits_per_pixel, &g_txt2.line_length, &g_txt2.endian);
+
+	g_txt3.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/W.xpm", &size[1], &size[0]);
+	g_txt3.addr = mlx_get_data_addr(g_txt3.img, &g_txt3.bits_per_pixel, &g_txt3.line_length, &g_txt3.endian);
+
+	g_txt4.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/E.xpm", &size[1], &size[0]);
+	g_txt4.addr = mlx_get_data_addr(g_txt4.img, &g_txt4.bits_per_pixel, &g_txt4.line_length, &g_txt4.endian);
+	
+	// mlx1.win = mlx_new_window(mlx1.mlx, 2000, 2000, "text01");
+	// mlx_put_image_to_window(mlx1.mlx, mlx1.win, g_txt1.img, 0, 0);
+	// mlx_put_image_to_window(mlx1.mlx, mlx1.win, g_txt2.img, 200, 200);
+	// mlx_put_image_to_window(mlx1.mlx, mlx1.win, g_txt3.img, 400, 400);
+	// mlx_put_image_to_window(mlx1.mlx, mlx1.win, g_txt4.img, 600, 600);
+
+
+
+
+	// t_mlx	mlx2;
+	// mlx2.mlx = mlx_init();
+	// mlx2.win = mlx_new_window(mlx2.mlx, 128, 128, "text02");
+	// mlx_put_image_to_window(mlx2.mlx, mlx2.win, g_txt1.img, 0, 0);
+
+
+
+	// t_mlx	mlx3;
+	// mlx3.mlx = mlx_init();
+	// mlx3.win = mlx_new_window(mlx3.mlx, 128, 128, "text03");
+	// mlx_put_image_to_window(mlx3.mlx, mlx3.win, g_txt1.img, 0, 0);
+
+
+
+	// t_mlx	mlx4;
+	// mlx4.mlx = mlx_init();
+	// mlx4.win = mlx_new_window(mlx4.mlx, 128, 128, "text04");
+	// mlx_put_image_to_window(mlx4.mlx, mlx4.win, g_txt1.img, 0, 0);
+
+	// mlx_loop(mlx3.mlx);
+	// mlx_loop(mlx2.mlx);
+	// mlx_loop(mlx1.mlx);
+	// mlx_loop(mlx4.mlx);
+}
+
 void	cub3d(int nb_line, int max_len)
 {
 	g_mlx.mlx = mlx_init();
-	g_data.resolution[0] = 1920;
-	g_data.resolution[1] = 1920;
-	
-	if (nb_line && max_len)
-	{
-		
-	}
+	g_data.resolution[0] = 5120 / 2;
+	g_data.resolution[1] = 2880 / 2;
+	init_text();
 	g_mlx.win = mlx_new_window(g_mlx.mlx, g_data.resolution[0], g_data.resolution[1], "CUB3D");
 	draw_map(nb_line, max_len);
 	img.img = mlx_new_image(g_mlx.mlx, g_data.resolution[0], g_data.resolution[1]);

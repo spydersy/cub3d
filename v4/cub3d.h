@@ -73,6 +73,11 @@ t_data			g_data;
 t_liste			*g_liste;
 t_mlx			g_mlx;
 t_img			img;
+t_img			g_txt1;
+t_img			g_txt2;
+t_img			g_txt3;
+t_img			g_txt4;
+t_img			g_txts;
 int				nb_line;
 int				max_len;
 
