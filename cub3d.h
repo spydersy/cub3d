@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/01 04:35:43 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/21 08:58:53 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include "./link.h"
 #include "./GNL/get_next_line.h"
 #include "./LBFT/libft.h"
-#include "mlx.h"
+#include "../mlx.h"
 
 int		ddai;
 
@@ -78,6 +78,7 @@ void				dda(int x0, int y0,  int x1, int y1, int color);
 int                 max_of(int i, int j);
 void                ft_data(int fd);
 char				**my_split(char const *s, char c, char d);
+void         	   my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void        		ft_map(int fd);
 int					skip_line(const char *line);
 int					get_resolution(char **content);

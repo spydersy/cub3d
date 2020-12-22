@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/01 06:58:13 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/21 09:01:53 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,21 +252,12 @@ void	get_new_position(float x0, float y0, float x1, float y1, int nb_steps)
 
 void	ft_move_v(int direction)
 {
-	// g_player.y = g_player.y + (direction * 10);
-
-
 		get_new_position(
 		g_player.x,
 		g_player.y,
 		(g_player.x + (direction * -1) * cosf(g_player.rotation) * 5),
 		(g_player.y + (direction * -1) * sinf(g_player.rotation) * 5), 4);
-		// g_player.x += (direction * -1) * cosf(g_player.rotation) * 5;
-		// g_player.y += (direction * -1) * sinf(g_player.rotation) * 5;
 
-	// if ((g_map[g_player.y / 20][g_player.x / 20] == '1' || g_map[g_player.y / 20][g_player.x / 20] == ' '))
-	// {
-	// 	g_player.y = g_player.y - (direction * 10);
-	// }
 	mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -277,15 +268,6 @@ void	ft_move_h(int direction)
 		g_player.y,
 		(g_player.x + (direction) * cosf(g_player.rotation + PI / 2) * 5),
 		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 5), 4);
-	
-		// g_player.x += (direction) * cosf(g_player.rotation + PI/2) * 5;
-		// g_player.y += (direction) * sinf(g_player.rotation + PI/2) * 5;
-	// g_player.x = g_player.x + (direction * 10);
-
-	// if ((g_map[g_player.y / 20][g_player.x / 20] == '1' || g_map[g_player.y / 20][g_player.x / 20] == ' '))
-	// {
-	// 	g_player.x = g_player.x - (direction * 10);
-	// }
 	mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -297,14 +279,14 @@ int		ft_key(int key,  void *param)
 		
 	}
 	
-	if (key == 123)	//- linux = 65361, macos 123; //rotation
+	if (key == 65361)	//- linux = 65361, macos 123; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		g_player.rotation = g_player.rotation  - PI / 100;
 		g_player.rotation = normalize(g_player.rotation);
 	}
-	else if (key == 124)	//+ linux = 65363, macos 124; //rotation
+	else if (key == 65363)	//+ linux = 65363, macos 124; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
@@ -312,25 +294,25 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = normalize(g_player.rotation);
 	}
 
-	if (key == 0) //A linex = 97; A macos = 0
+	if (key == 97) //A linex = 97; A macos = 0
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(-1);
 	}
-	else if (key == 2) //D linux = 100; A macos = 2
+	else if (key == 100) //D linux = 100; A macos = 2
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_h(1);
 	}
-	else if (key == 13) //W linux = 119; W macos = 13
+	else if (key == 119) //W linux = 119; W macos = 13
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 		ft_move_v(-1);
 	}
-	else if (key == 1) //S linux = 115; Smacos = 1
+	else if (key == 115) //S linux = 115; Smacos = 1
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
@@ -345,24 +327,24 @@ int		ft_key(int key,  void *param)
 	
 	ddai = 0;
 
-	// while (++step < g_data.resolution[0] / 2)
-	// {
-		// g_player.rotation = g_player.rotation - teta;
-		// dda(g_player.x,
-		// g_player.y,
-		// (int)(g_player.x + cosf(g_player.rotation) * 100000000),
-		// (int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
-	// }
-	step = 0;
-	g_player.rotation = old_angle;
-	// while (++step <= g_data.resolution[0] / 2)
-	// {
-		// g_player.rotation = g_player.rotation + teta;
+	while (++step < g_data.resolution[0] / 2)
+	{
+		g_player.rotation = g_player.rotation - teta;
 		dda(g_player.x,
 		g_player.y,
 		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
 		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
-	// }
+	}
+	step = 0;
+	g_player.rotation = old_angle;
+	while (++step <= g_data.resolution[0] / 2)
+	{
+		g_player.rotation = g_player.rotation + teta;
+		dda(g_player.x,
+		g_player.y,
+		(int)(g_player.x + cosf(g_player.rotation) * 100000000),
+		(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0XFF0000);
+	}
 	// printf("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n");
 	g_player.rotation = old_angle;
 	return (1);

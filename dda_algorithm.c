@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:49:10 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/01 06:11:54 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/21 09:05:37 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,18 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 	float y = y0;
 
 	int		i  = 0;
+	
 	while (i <= step)
 	{
-			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, color);
-
+		if (g_map[(int)y / 20][(int)x / 20] == '2')
+			color = 0x00ff00;
+		else
+		{
+			color = 0xff0000;
+		}
+		
+		mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, color);
+			// my_mlx_pixel_put(&img, x, y, color);
 		if (!(int)y || !(int)x || !((int)x % 20) || !((int)y % 20) || !(((int)x + 1) % 20) || !(((int)y + 1) % 20))
 		{
 		
@@ -43,18 +51,6 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 				break;
 			}
 		}
-		if (!(((int)x + 1) % 20) && !(((int)y + 1) % 20) && (g_map[((int)y - 2) / 20][((int)x - 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x + 2) / 20] == '1'))
-		{
-			ft_error("1");
-				printf("1\n");
-				break;
-		}
-		if (!(((int)x) % 20) && !(((int)y + 1) % 20) && (g_map[((int)y - 2) / 20][((int)x + 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x - 2) / 20] == '1'))
-		{
-			ft_error("2");
-				printf("2\n");
-				break;
-		}
 		if (!(((int)x) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x + 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x - 2) / 20] == '1'))
 		{
 				printf("4\n");
@@ -62,7 +58,7 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 		}
 		if (!(((int)x + 1) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x - 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x + 2) / 20] == '1'))
 		{
-				printf("3\n");
+				printf("DONE\n");
 				break;
 		}
 
