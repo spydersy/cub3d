@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/21 16:56:40 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/22 18:30:48 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ void	get_new_position(float x0, float y0, float x1, float y1, int nb_steps)
 	float x = x0;
 	float y = y0;
 
-	int		i  = 0;
+	int		i = 0;
 	nb_steps =((nb_steps <= step) ? (nb_steps) : (step));
 	while (i <= nb_steps)
 	{
@@ -239,7 +239,7 @@ void	ft_move_v(int direction)
 	g_player.x,
 	g_player.y,
 	(g_player.x + (direction * -1) * cosf(g_player.rotation) * 100000000),
-	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 30);
+	(g_player.y + (direction * -1) * sinf(g_player.rotation) * 100000000), 60);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -249,7 +249,7 @@ void	ft_move_h(int direction)
 	get_new_position(g_player.x,
 		g_player.y,
 		(g_player.x + (direction) * cosf(g_player.rotation + PI / 2) * 100000000),
-		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 30);
+		(g_player.y + (direction) * sinf(g_player.rotation + PI / 2) * 100000000), 18);
 	// mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
@@ -269,35 +269,35 @@ int		ft_key(int key,  void *param)
 	{
 		
 	}
-	if (key == 65361)	//- linux = 65361, macos 123; //rotation
+	if (key == 123)	//- linux = 65361, macos 123; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
-		g_player.rotation = g_player.rotation  - PI / 100;
+		g_player.rotation = g_player.rotation  - PI / 40;
 		g_player.rotation = normalize(g_player.rotation);
 	}
-	else if (key == 65363)	//+ linux = 65363, macos 124; //rotation
+	else if (key == 124)	//+ linux = 65363, macos 124; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
-		g_player.rotation = (g_player.rotation  + PI / 100);
+		g_player.rotation = (g_player.rotation  + PI / 40);
 		g_player.rotation = normalize(g_player.rotation);
 	}
 
-	else if (key == 97) //A linex = 97; A macos = 0
+	else if (key == 0) //A linex = 97; A macos = 0
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		ft_move_h(-1);
 	}
-	else if (key == 100) //D linux = 100; A macos = 2
+	else if (key == 2) //D linux = 100; A macos = 2
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		ft_move_h(1);
 	}
-	else if (key == 119 || key == 65362) //W linux = 119; W macos = 13
+	else if (key == 13 || key == 65362) //W linux = 119; W macos = 13
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		ft_move_v(-1);
 	}
-	else if (key == 115 || key == 65364) //S linux = 115; Smacos = 1
+	else if (key == 1 || key == 65364) //S linux = 115; Smacos = 1
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
 		ft_move_v(1);
@@ -321,6 +321,7 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = g_player.rotation + teta;
 	}
 	/* END */
+			printf("nb_sprite : %d\n", g_nb_sprite);
 
 	g_player.rotation = old_angle;
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
@@ -350,8 +351,8 @@ void	init_text(void)
 void	cub3d(int nb_line, int max_len)
 {
 	g_mlx.mlx = mlx_init();
-	g_data.resolution[0] = 1000;
-	g_data.resolution[1] = 1000;
+	g_data.resolution[0] = 1920 / 2;
+	g_data.resolution[1] = 1920 / 2;
 	init_text();
 	g_mlx.win = mlx_new_window(g_mlx.mlx, g_data.resolution[0], g_data.resolution[1], "CUB3D");
 	draw_map(nb_line, max_len);

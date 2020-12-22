@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/21 08:58:53 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/12/22 18:01:04 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include "./link.h"
 #include "./GNL/get_next_line.h"
 #include "./LBFT/libft.h"
-#include "../mlx.h"
+#include "mlx.h"
 
 int		ddai;
 

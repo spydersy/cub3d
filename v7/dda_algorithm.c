@@ -70,83 +70,6 @@ void	build_wall(float dist, int c, int color, float x, float y)
 	}
 }
 
-void	calc_dist_sprite(void)
-{
-	int		i;
-	float	min_di;
-	i = -1;
-	
-	while (++i < g_nb_sprite)
-	{
-		// g_sprite[i].measure = 0;
-		if (vabs(g_sprite[i].start_y - g_sprite[i].end_y)
-		> vabs(g_sprite[i].start_x - g_sprite[i].end_x))
-		{
-			g_sprite[i].start_y = g_sprite[i].start_x;
-			g_sprite[i].end_y = g_sprite[i].end_x;
-		}
-		else
-		{
-			g_sprite[i].start_x = g_sprite[i].start_y;
-			g_sprite[i].end_x = g_sprite[i].end_y;
-		}
-		printf("dist : %f, %lu\n", distance(g_sprite[i].start_x, 0, g_sprite[i].end_x, 0), random());
-		g_sprite[i].distance = distance(g_player.x, g_player.y,
-		vabs((g_sprite[i].start_y - g_sprite[i].end_y) / 2),
-		g_sprite[i].end_x);
-	}
-}
-
-void	add_sprite(float x, float y, int ray, int i)
-{
-	g_sprite[g_nb_sprite].start_x = x;
-	g_sprite[g_nb_sprite].start_y = y;
-	g_sprite[g_nb_sprite].end_x = x;
-	g_sprite[g_nb_sprite].end_y = y;
-	g_sprite[g_nb_sprite].first_ray = ray;
-	g_sprite[g_nb_sprite].last_ray = ray;
-	g_sprite[g_nb_sprite].xp = x / 64;
-	g_sprite[g_nb_sprite].yp = y / 64;
-	g_nb_sprite++;
-	calc_dist_sprite();
-}
-
-int		check_sprite(float x, float y, int ray)
-{
-	int		x_position;
-	int		y_position;
-	int		i;
-
-	i = -1;
-	x_position = x / 64;
-	y_position = y / 64;
-	if (g_nb_sprite == 0)
-	{
-		add_sprite(x, y, ray, 0);
-		return (0);
-	}
-	while (++i < g_nb_sprite)
-	{
-		if (x_position == g_sprite[i].xp && y_position == g_sprite[i].yp)
-		{
-			printf("\nend_x %f\n", g_sprite[i].end_x = x);
-			printf("end_y %f\n\n", g_sprite[i].end_y = y);
-			g_sprite[i].last_ray = ray;
-			return (0);
-		}
-	}
-	add_sprite(x, y, ray, i);
-	return (0);
-}
-
-void	build_sprite(int col)
-{
-	// if ()
-	// {
-		
-	// }
-}
-
 void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 {
 	float		dx = x1 - x0;
@@ -175,7 +98,6 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
 			build_wall(dist, col, wcolor, x, y);
-			build_sprite(col);
 			break;
 		}
 		else if (!(((int)x) % 64) && !(((int)y + 1) % 64) && (g_map[((int)y - 2) / 64][((int)x + 2) / 64] == '1' && g_map[((int)y + 2) / 64][((int)x - 2) / 64] == '1'))
@@ -183,7 +105,6 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
 			build_wall(dist, col, wcolor, x, y);
-			build_sprite(col);
 			break;
 		}
 		else if (!(((int)x) % 64) && !(((int)y) % 64) && (g_map[((int)y - 2) / 64][((int)x + 2) / 64] == '1' && g_map[((int)y + 2) / 64][((int)x - 2) / 64] == '1'))
@@ -191,7 +112,6 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
 			build_wall(dist, col, wcolor, x, y);
-			build_sprite(col);
 			break;
 		}
 		else if (!(((int)x + 1) % 64) && !(((int)y) % 64) && (g_map[((int)y - 2) / 64][((int)x - 2) / 64] == '1' && g_map[((int)y + 2) / 64][((int)x + 2) / 64] == '1'))
@@ -199,7 +119,6 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
 			build_wall(dist, col, wcolor, x, y);
-			build_sprite(col);
 			break;
 		}
 		else if (!y || !x || !((int)x % 64) || !((int)y % 64) || !(((int)x + 1) % 64) || !(((int)y + 1) % 64))
@@ -217,7 +136,6 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 				dist = distance(g_player.x, g_player.y, x, y);
 				dist = dist * cos(vabs(g_player.current - g_player.rotation));
 				build_wall(dist, col, wcolor, x, y);
-				build_sprite(col);
 				break;
 			}
 		}
