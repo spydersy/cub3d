@@ -321,7 +321,6 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = g_player.rotation + teta;
 	}
 	/* END */
-			printf("nb_sprite : %d\n", g_nb_sprite);
 
 	g_player.rotation = old_angle;
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
