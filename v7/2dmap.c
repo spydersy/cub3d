@@ -272,13 +272,13 @@ int		ft_key(int key,  void *param)
 	if (key == 123)	//- linux = 65361, macos 123; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
-		g_player.rotation = g_player.rotation  - PI / 40;
+		g_player.rotation = g_player.rotation  - PI / 2000;
 		g_player.rotation = normalize(g_player.rotation);
 	}
 	else if (key == 124)	//+ linux = 65363, macos 124; //rotation
 	{
 		mlx_clear_window(g_mlx.mlx, g_mlx.win);
-		g_player.rotation = (g_player.rotation  + PI / 40);
+		g_player.rotation = (g_player.rotation  + PI / 2000);
 		g_player.rotation = normalize(g_player.rotation);
 	}
 
@@ -321,7 +321,11 @@ int		ft_key(int key,  void *param)
 		g_player.rotation = g_player.rotation + teta;
 	}
 	/* END */
-
+	if (g_nb_sprite)
+	{
+		calc_diff_sprite();
+		draw_sprite();
+	}
 	g_player.rotation = old_angle;
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 	return (0);
@@ -352,6 +356,10 @@ void	cub3d(int nb_line, int max_len)
 	g_mlx.mlx = mlx_init();
 	g_data.resolution[0] = 1920 / 2;
 	g_data.resolution[1] = 1920 / 2;
+	if (!(g_wall_distances = malloc(sizeof(float) * g_data.resolution[0])))
+		ft_error("malloc");
+	if (!(g_wall_pix = malloc(sizeof(float) * g_data.resolution[0])))
+		ft_error("malloc");
 	init_text();
 	g_mlx.win = mlx_new_window(g_mlx.mlx, g_data.resolution[0], g_data.resolution[1], "CUB3D");
 	draw_map(nb_line, max_len);

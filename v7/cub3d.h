@@ -79,14 +79,16 @@ typedef struct	s_sprite
 	int		first_ray;
 	int		last_ray;
 
+	float	diff_max;
+
 	int		xp;
 	int		yp;
 
 	float	distance;
 	
-	// int		measure; //0 for x 1 for y
+	// int		mesure; //0 for x 1 for y
 	
-	int		id;
+	// int		id;
 }				t_sprite;
 
 char			**g_map;
@@ -110,6 +112,9 @@ int				max_len;
 float				dist;
 int					g_nb_sprite;
 
+float					*g_wall_distances;
+float					*g_wall_pix;
+
 void				my_mlx_pixel_put(t_img *data, int x, int y, int color);
 float				distance(float x0, float y0, float x1, float y1);
 float				vabs(float i);
@@ -132,5 +137,6 @@ int					manip_line(const char *line);
 int					get_texture(char **content);
 void				cub3d(int nb_line, int max_len);
 int					check_sprite(float x, float y, int col);
-
+void				calc_diff_sprite();
+void					draw_sprite();
 #endif

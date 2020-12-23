@@ -34,8 +34,8 @@ void	build_wall(float dist, int c, int color, float x, float y)
 	char					*dst;
 
 	h = (64 * g_data.resolution[0]) / dist;
+	g_wall_pix[c] = (g_data.resolution[1] - h) / 2;
 	i = -1;
-
 	while (++i < (float)g_data.resolution[1])
 	{
 		if (i <= (float)((float)(g_data.resolution[1] - h) / 2))
@@ -85,8 +85,12 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 
 	int		i  = 0;
 
-	static int wcolor;
-	int			done = 0;
+	if (color)
+	{
+
+	}
+
+	static int	wcolor;
 	while (i <= step)
 	{
 		if (g_map[(int)y / 64][(int)x / 64] == '2')
@@ -97,6 +101,7 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 		{
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			g_wall_distances[col] = dist;
 			build_wall(dist, col, wcolor, x, y);
 			break;
 		}
@@ -104,6 +109,7 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 		{
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			g_wall_distances[col] = dist;
 			build_wall(dist, col, wcolor, x, y);
 			break;
 		}
@@ -111,6 +117,7 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 		{
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			g_wall_distances[col] = dist;
 			build_wall(dist, col, wcolor, x, y);
 			break;
 		}
@@ -118,6 +125,7 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 		{
 			dist = distance(g_player.x, g_player.y, x, y);
 			dist = dist * cos(vabs(g_player.current - g_player.rotation));
+			g_wall_distances[col] = dist;
 			build_wall(dist, col, wcolor, x, y);
 			break;
 		}
@@ -135,6 +143,7 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 					wcolor = 0x34d0eb;
 				dist = distance(g_player.x, g_player.y, x, y);
 				dist = dist * cos(vabs(g_player.current - g_player.rotation));
+				g_wall_distances[col] = dist;
 				build_wall(dist, col, wcolor, x, y);
 				break;
 			}
