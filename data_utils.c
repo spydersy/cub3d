@@ -63,9 +63,7 @@ int		manip_line(const char *line)
 	char			**content;
 	static int		nb_data = 0;
 	int				nb;
-	int				i;
 
-	i = 0;
 	nb = 0;
 	if ((content = my_split(line, ' ', '\t')) == NULL)
 		ft_error("Split\n");

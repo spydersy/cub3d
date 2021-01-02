@@ -53,12 +53,12 @@ void	dda(int x0, int y0,  int x1, int y1, int color)
 		}
 		if (!(((int)x) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x + 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x - 2) / 20] == '1'))
 		{
-				printf("4\n");
+				// printf("4\n");
 				break;
 		}
 		if (!(((int)x + 1) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x - 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x + 2) / 20] == '1'))
 		{
-				printf("DONE\n");
+				// printf("DONE\n");
 				break;
 		}
 

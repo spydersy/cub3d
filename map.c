@@ -181,9 +181,7 @@ void		ft_move(int nb_line, int max_len)
 void		map_2d(int nb_line, int max_len)
 {
 	int		i;
-	int		c;
 
-	c = 0;
 	i = 0;
 	if ((g_map = malloc(sizeof(char *) * (nb_line + 1))) == 0)
 		ft_error("malloc map 1\n");
@@ -215,7 +213,7 @@ void		ft_map(int fd)
 		nb_line++;
 		insertion(g_liste, line);
 		max_len = (max_len < (int)ft_strlen(line)
-		? (ft_strlen(line)) : (max_len));
+		? ((int)ft_strlen(line)) : (max_len));
 		if (skip_line(line) == 0)
 			check_line(line, max_len);
 	}
