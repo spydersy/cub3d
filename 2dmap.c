@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/22 18:02:00 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/04 06:27:24 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,6 +271,60 @@ void	ft_move_h(int direction)
 	mlx_pixel_put(g_mlx.mlx, g_mlx.win, g_player.x, g_player.y, 0xff0000);
 }
 
+void	dda2(int x0, int y0,  int x1, int y1, int color)
+{
+		int		dx = x1 - x0;
+	int		dy = y1 - y0;
+
+	int		step = ((vabs(dx) > vabs(dy)) ? (abs(dx)) : (vabs(dy)));
+
+	float	xi = dx / (float)step;
+	float	yi = dy / (float)step;
+
+	float x = x0;
+	float y = y0;
+
+	int		i  = 0;
+	
+	while (i <= step)
+	{
+		// if (g_map[(int)y / 20][(int)x / 20] == '2' && (int)x % 20 ==  10 && (int)y % 20== 10)
+		// {
+			// color = 0xffffff;
+		// }
+			color = 0x0000ff;
+			mlx_pixel_put(g_mlx.mlx, g_mlx.win, x, y, color);
+		if (g_map[(int)y / 20][(int)x / 20] == '2')
+		{
+			mlx_pixel_put(g_mlx.mlx, g_mlx.win, (int)(x / 20) * 20 + 10, (int)(y / 20) * 20 + 10, 0xffffff);
+		}
+		if (!(int)y || !(int)x || !((int)x % 20) || !((int)y % 20) || !(((int)x + 1) % 20) || !(((int)y + 1) % 20))
+		{
+		
+			if (g_map[(int)y / 20][(int)x / 20] == '1' || g_map[(int)y / 20][(int)x / 20] == ' ')
+			{
+				break;
+			}
+		}
+		if (!(((int)x) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x + 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x - 2) / 20] == '1'))
+		{
+				// printf("4\n");
+				break;
+		}
+		if (!(((int)x + 1) % 20) && !(((int)y) % 20) && (g_map[((int)y - 2) / 20][((int)x - 2) / 20] == '1' && g_map[((int)y + 2) / 20][((int)x + 2) / 20] == '1'))
+		{
+				// printf("DONE\n");
+				break;
+		}
+
+			x += xi;
+			y += yi;
+			i++;
+	}
+
+}
+
+
 int		ft_key(int key,  void *param)
 {
 
@@ -347,6 +401,12 @@ int		ft_key(int key,  void *param)
 	}
 	// printf("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n");
 	g_player.rotation = old_angle;
+
+	dda2(g_player.x,
+	g_player.y,
+	(int)(g_player.x + cosf(g_player.rotation) * 100000000),
+	(int)(g_player.y + sinf(g_player.rotation) * 100000000), 0X0000ff);
+
 	return (1);
 }
 
