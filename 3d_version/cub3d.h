@@ -23,7 +23,7 @@
 #	include "./link.h"
 #	include "./GNL/get_next_line.h"
 #	include "./LBFT/libft.h"
-#	include "../mlx.h"
+#	include "mlx.h"
 
 
 #define PI 3.14159265359
@@ -135,6 +135,4 @@ int					manip_line(const char *line);
 int					get_texture(char **content);
 void				cub3d(int nb_line, int max_len);
 int					check_sprite(float x, float y, int col);
-void				calc_diff_sprite();
-void					draw_sprite();
 #endif

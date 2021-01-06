@@ -68,5 +68,3 @@ typedef struct  s_sprite
     float yp;
     //int v;
 }               t_sprite;
- 
- 
