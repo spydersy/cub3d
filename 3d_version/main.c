@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:12:35 by abelarif          #+#    #+#             */
-/*   Updated: 2021/01/09 15:57:30 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:42:19 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@ void	ft_error(char *str)
 {
 	ft_putstr_fd("Error\n", 2);
 	if (str == NULL)
-	{
 		strerror(errno);
-	}
 	else
 	{
 		ft_putstr_fd(str, 2);
+		ft_putchar_fd('\n', 2);
 	}
 	exit(-1);
 }
-
-int		main(int argc, char *argv[])
+int		check_args_errors(int argc, char *argv[])
 {
 	int		fd;
 
@@ -51,9 +49,23 @@ int		main(int argc, char *argv[])
 		ft_error("arg Save\n");
 	if ((fd = open(argv[argc - 1], O_RDONLY)) < 0)
 		ft_error("Read file\n");
-	ft_data(fd);
+	return (fd);
+}
+
+void	print_data()
+{
+	
+}
+
+int		main(int argc, char *argv[])
+{
+	int		fd;
+
+	fd = check_args_errors(argc, argv);
 	g_mlx.mlx = mlx_init();
+	ft_data(fd);
 	init_text();
-	ft_map(fd);
+	print_data();
+	// ft_map(fd);
 	return (0);
 }
