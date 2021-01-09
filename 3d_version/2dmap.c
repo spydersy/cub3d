@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2021/01/09 16:05:52 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:13:33 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ void	init_text(void)
 	g_txt2.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/S.xpm", &size[0], &size[1]);
 	g_txt3.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/W.xpm", &size[0], &size[1]);
 	g_txt4.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/E.xpm", &size[0], &size[1]);
-	g_txts.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/spridte.xpm", &sizes[0], &sizes[1]);
+	g_txts.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/sprite.xpm", &sizes[0], &sizes[1]);
 	if (!g_txt1.img || !g_txt2.img || !g_txt3.img || !g_txt4.img || !g_txts.img)
 		ft_error("TEXT\n");
 	g_txt1.addr = mlx_get_data_addr(g_txt1.img, &g_txt1.bits_per_pixel, &g_txt1.line_length, &g_txt1.endian);

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:37:18 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/28 09:55:01 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:12:51 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@ void	ft_init(void)
 	g_player.x = -1;
 	g_player.y = -1;
 	g_player.rotation = 0;
+	
+	g_txt1.resolution[0] = 128;
+	g_txt1.resolution[1] = 124;
+	g_txt2.resolution[0] = 128;
+	g_txt2.resolution[1] = 124;
+	g_txt3.resolution[0] = 128;
+	g_txt3.resolution[1] = 124;
+	g_txt4.resolution[0] = 128;
+	g_txt4.resolution[1] = 124;
+	g_txts.resolution[0] = 64;
+	g_txts.resolution[1] = 64;
 }
 
 int		all_digit(const char *str)

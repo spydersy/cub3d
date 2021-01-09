@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2021/01/09 15:58:03 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:13:19 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct  s_img
     int         bits_per_pixel;
     int         line_length;
     int         endian;
+	int			resolution[2];
 }               t_img;
 
 
