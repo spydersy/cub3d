@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:12:35 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/16 00:57:30 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 15:57:30 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		main(int argc, char *argv[])
 	if ((fd = open(argv[argc - 1], O_RDONLY)) < 0)
 		ft_error("Read file\n");
 	ft_data(fd);
+	g_mlx.mlx = mlx_init();
+	init_text();
 	ft_map(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2021/01/09 15:09:05 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 15:58:03 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int					g_nb_sprite;
 float					*g_wall_distances;
 float					*g_wall_pix;
 
+void				init_text(void);
 void				my_mlx_pixel_put(t_img *data, int x, int y, int color);
 float				distance(float x0, float y0, float x1, float y1);
 float				vabs(float i);
