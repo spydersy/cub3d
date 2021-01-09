@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:12:35 by abelarif          #+#    #+#             */
-/*   Updated: 2021/01/09 16:42:19 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:54:52 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,16 @@ int		check_args_errors(int argc, char *argv[])
 
 void	print_data()
 {
-	
+
+	printf("resolution : (%d, %d)\n", g_data.resolution[0], g_data.resolution[1]);
+	printf("NO TEXTURE : >>%s<<\n", g_data.no_texture);
+	printf("SO TEXTURE : >>%s<<\n", g_data.so_texture);
+	printf("WE TEXTURE : >>%s<<\n", g_data.we_texture);
+	printf("EA TEXTURE : >>%s<<\n", g_data.ea_texture);
+	printf("SP TEXTURE : >>%s<<\n", g_data.sp_texture);
+	printf("CE COLOR   : (%d, %d, %d)\n", g_data.ce_color[0], g_data.ce_color[1], g_data.ce_color[2]);
+	printf("FL COLOR   : (%d, %d, %d)\n", g_data.fl_color[0], g_data.fl_color[1], g_data.fl_color[2]);
+
 }
 
 int		main(int argc, char *argv[])
@@ -64,8 +73,8 @@ int		main(int argc, char *argv[])
 	fd = check_args_errors(argc, argv);
 	g_mlx.mlx = mlx_init();
 	ft_data(fd);
-	init_text();
 	print_data();
-	// ft_map(fd);
+	init_text();
+	ft_map(fd);
 	return (0);
 }

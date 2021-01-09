@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:52:39 by abelarif          #+#    #+#             */
-/*   Updated: 2021/01/09 16:32:44 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 17:18:21 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,18 +178,18 @@ int		ft_key(int key,  void *args)
 
 void	init_text(void)
 {
-	g_txt1.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/N.xpm", &g_txt1.resolution[0], &g_txt1.resolution[1]);
-	g_txt2.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/S.xpm", &g_txt1.resolution[0], &g_txt1.resolution[1]);
-	g_txt3.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/W.xpm", &g_txt1.resolution[0], &g_txt1.resolution[1]);
-	g_txt4.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/E.xpm", &g_txt1.resolution[0], &g_txt1.resolution[1]);
-	// g_txts.img = mlx_xpm_file_to_image(g_mlx.mlx, "./xpm/sprite.xpm", &sizes[0], &sizes[1]);
-	if (!g_txt1.img || !g_txt2.img || !g_txt3.img || !g_txt4.img)
+	g_txt4.img = mlx_xpm_file_to_image(g_mlx.mlx, g_data.no_texture, &g_txt1.resolution[0], &g_txt1.resolution[1]);
+	g_txt3.img = mlx_xpm_file_to_image(g_mlx.mlx, g_data.so_texture, &g_txt1.resolution[0], &g_txt1.resolution[1]);
+	g_txt2.img = mlx_xpm_file_to_image(g_mlx.mlx, g_data.we_texture, &g_txt1.resolution[0], &g_txt1.resolution[1]);
+	g_txt1.img = mlx_xpm_file_to_image(g_mlx.mlx, g_data.ea_texture, &g_txt1.resolution[0], &g_txt1.resolution[1]);
+	g_txts.img = mlx_xpm_file_to_image(g_mlx.mlx, g_data.sp_texture, &g_txts.resolution[0], &g_txts.resolution[1]);
+	if (!g_txt1.img || !g_txt2.img || !g_txt3.img || !g_txt4.img || !g_txts.img)
 		ft_error("TEXTURE\n");
 	g_txt1.addr = mlx_get_data_addr(g_txt1.img, &g_txt1.bits_per_pixel, &g_txt1.line_length, &g_txt1.endian);
 	g_txt2.addr = mlx_get_data_addr(g_txt2.img, &g_txt2.bits_per_pixel, &g_txt2.line_length, &g_txt2.endian);
 	g_txt3.addr = mlx_get_data_addr(g_txt3.img, &g_txt3.bits_per_pixel, &g_txt3.line_length, &g_txt3.endian);
 	g_txt4.addr = mlx_get_data_addr(g_txt4.img, &g_txt4.bits_per_pixel, &g_txt4.line_length, &g_txt4.endian);
-	// g_txts.addr = mlx_get_data_addr(g_txts.img, &g_txts.bits_per_pixel, &g_txts.line_length, &g_txts.endian);
+	g_txts.addr = mlx_get_data_addr(g_txts.img, &g_txts.bits_per_pixel, &g_txts.line_length, &g_txts.endian);
 }
 
 void	cub3d(int nb_line, int max_len)

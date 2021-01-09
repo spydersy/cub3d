@@ -1,11 +1,11 @@
-R   100 30
-NO  ./path_to_the_north_texture
-SO  ./path_to_the_south_texture
-WE  ./path_to_the_est_texture
-S   ./path_to_the_sprite_texture
+R   100 3000
+NO  xpm/N.xpm
+SO  xpm/E.xpm
+WE  xpm/S.xpm
+S   ./xpm/SP.xpm
 F   100,100,0
 C   105,30,1
-EA  ./path_to_the_east_texture
+EA  xpm/W.xpm
 
 1111111111111111111111111111111111111111111             111                                   1
 1000000000000000000000000000000000000000001             111                                   11

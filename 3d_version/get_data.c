@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:40:48 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/16 00:42:03 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:50:26 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		get_resolution(char **content)
 	if (all_digit(content[1]) && all_digit(content[2]) && g_data.nb[0] == 0)
 	{
 		g_data.nb[0] = 1;
+		g_data.resolution[0] = ft_atoi(content[1]);
+		g_data.resolution[1] = ft_atoi(content[2]);
 		return (1);
 	}
 	else if (g_data.nb[0] == 1)
