@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:14:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/12/21 17:12:20 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/01/09 15:09:05 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,27 @@
 #	include "./link.h"
 #	include "./GNL/get_next_line.h"
 #	include "./LBFT/libft.h"
-#	include "mlx.h"
 
 
 #define PI 3.14159265359
+
+#define A_KEY	97
+#define D_KEY	100
+#define W_KEY	119
+#define S_KEY	115
+#define L_KEY	65361
+#define R_KEY	65363
+#define E_KEY	65307
+#include "../mlx.h"
+
+// #define A_KEY	0
+// #define D_KEY	2
+// #define W_KEY	13
+// #define S_KEY	1
+// #define L_KEY	123
+// #define R_KEY	124
+// #define E_KEY
+// #include <mlx.h>
 
 typedef struct	s_data
 {
