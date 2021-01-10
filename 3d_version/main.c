@@ -73,7 +73,7 @@ int		main(int argc, char *argv[])
 	fd = check_args_errors(argc, argv);
 	g_mlx.mlx = mlx_init();
 	ft_data(fd);
-	print_data();
+	// print_data();
 	init_text();
 	ft_map(fd);
 	return (0);

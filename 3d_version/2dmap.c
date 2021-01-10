@@ -156,6 +156,7 @@ int		ft_cast_rays()
 		g_player.rotation += teta;
 	}
 	g_player.rotation = g_player.current;
+	to_sprite();
 	mlx_put_image_to_window(g_mlx.mlx, g_mlx.win, img.img, 0, 0);
 	return (0);
 }
@@ -176,6 +177,15 @@ int		ft_key(int key,  void *args)
 	return (ft_cast_rays());
 }
 
+int		do_nothing(int key, void *args)
+{
+	// key = 0;
+	if (key && args)
+	{
+	}
+	return (0);
+}
+
 void	init_text(void)
 {
 	g_txt4.img = mlx_xpm_file_to_image(g_mlx.mlx, g_data.no_texture, &g_txt1.resolution[0], &g_txt1.resolution[1]);
@@ -194,8 +204,7 @@ void	init_text(void)
 
 void	cub3d(int nb_line, int max_len)
 {
-	g_data.resolution[0] = 1920 / 2;
-	g_data.resolution[1] = 1080;
+
 	if (!(g_wall_distances = malloc(sizeof(float) * g_data.resolution[0])))
 		ft_error("malloc");
 	if (!(g_wall_pix = malloc(sizeof(float) * g_data.resolution[0])))
@@ -204,8 +213,11 @@ void	cub3d(int nb_line, int max_len)
 	draw_map(nb_line, max_len);
 	img.img = mlx_new_image(g_mlx.mlx, g_data.resolution[0], g_data.resolution[1]);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	ft_cast_rays();
 	mlx_key_hook(g_mlx.win, ft_key, (void*)0);
-	mlx_hook(g_mlx.win, 2, 1L << 0, ft_key, (void*)0);
-	mlx_expose_hook(g_mlx.win, ft_key, (void*)0);
+	mlx_hook(g_mlx.win, 2, 0, ft_key, (void*)0);
+	mlx_hook(g_mlx.win, 3, 0, do_nothing, (void*)0);
+
+	// mlx_expose_hook(g_mlx.win, do_nothing, (void*)0);
 	mlx_loop(g_mlx.mlx);
 }

@@ -145,7 +145,7 @@ void	dda(float x0, float y0,  float x1, float y1, int color, int col)
 			}
 			else if (g_map[(int)y / 64][(int)x / 64] == '2')
 			{
-				check_sprite(x, y, col);
+				check_sprite(x, y);
 			}
 		}
 		x += xi / 2;

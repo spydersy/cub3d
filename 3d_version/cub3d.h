@@ -27,23 +27,23 @@
 
 #define PI 3.14159265359
 
-#define A_KEY	97
-#define D_KEY	100
-#define W_KEY	119
-#define S_KEY	115
-#define L_KEY	65361
-#define R_KEY	65363
-#define E_KEY	65307
-#include "../mlx.h"
+// #define A_KEY	97
+// #define D_KEY	100
+// #define W_KEY	119
+// #define S_KEY	115
+// #define L_KEY	65361
+// #define R_KEY	65363
+// #define E_KEY	65307
+// #include "../mlx.h"
 
-// #define A_KEY	0
-// #define D_KEY	2
-// #define W_KEY	13
-// #define S_KEY	1
-// #define L_KEY	123
-// #define R_KEY	124
-// #define E_KEY
-// #include <mlx.h>
+#define A_KEY	0
+#define D_KEY	2
+#define W_KEY	13
+#define S_KEY	1
+#define L_KEY	123
+#define R_KEY	124
+#define E_KEY	53
+#include <mlx.h>
 
 typedef struct	s_data
 {
@@ -89,22 +89,21 @@ typedef struct  s_img
 
 typedef struct	s_sprite
 {
-	float	start_x;
-	float	start_y;
-
-	float	end_x;
-	float	end_y;
-
-	int		first_ray;
-	int		last_ray;
-
-	float	diff;
-
 	int		x_map;
 	int		y_map;
 
+	float	x;
+	float	y;
+
 	float	distance;
+
+	float	angle;
+	float	size;
+	float	xof;
+	float	yof;
 }				t_sprite;
+
+
 
 char			**g_map;
 t_player		g_player;
@@ -153,5 +152,7 @@ int					skip_line(const char *line);
 int					manip_line(const char *line);
 int					get_texture(char **content);
 void				cub3d(int nb_line, int max_len);
-int					check_sprite(float x, float y, int col);
+int					sprite(float x, float y);
+int					check_sprite(float x, float y);
+void				to_sprite(void);
 #endif
