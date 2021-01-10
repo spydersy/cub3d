@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_split.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abelarif <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 21:42:12 by abelarif          #+#    #+#             */
-/*   Updated: 2020/11/03 10:00:16 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/01/10 21:42:19 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-static	size_t		len_word(const char *s, char c, char d)
+static	size_t		len_word(const char *s, char c)
 {
 	size_t	i;
 	size_t	len;
 
 	i = 0;
 	len = 0;
-	while (s[i] == c || s[i] == d)
+	while (s[i] == c)
 		i++;
-	while (s[i] != c && s[i] != d && s[i++])
+	while (s[i] != c && s[i++])
 		len++;
 	return (len);
 }
 
-static	size_t		count_word(const char *s, char c, char d)
+static	size_t		count_word(const char *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -35,16 +35,16 @@ static	size_t		count_word(const char *s, char c, char d)
 	count = 0;
 	while (s[i])
 	{
-		if (s[i] != c && s[i] != d)
+		if (s[i] != c)
 			count++;
-		while (s[i] != c && s[i] != d && s[i + 1])
+		while (s[i] != c && s[i + 1])
 			i++;
 		i++;
 	}
 	return (count);
 }
 
-void				*my_free_split(char **split, int k)
+void				*free_split(char **split, int k)
 {
 	while (k >= 0)
 	{
@@ -56,7 +56,7 @@ void				*my_free_split(char **split, int k)
 	return (NULL);
 }
 
-char				**my_split(char const *s, char c, char d)
+char				**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -66,17 +66,17 @@ char				**my_split(char const *s, char c, char d)
 	i = 0;
 	k = 0;
 	if (!s || !(split = (char **)malloc(sizeof(char *)
-					* (count_word(s, c, d) + 1))))
+					* (count_word(s, c) + 1))))
 		return (NULL);
-	while (i < count_word(s, c, d))
+	while (i < count_word(s, c))
 	{
 		if (!(split[i] = (char *)malloc(sizeof(char)
-						* (len_word(&s[k], c, d) + 1))))
-			return ((my_free_split(split, k - 1)));
+						* (len_word(&s[k], c) + 1))))
+			return ((free_split(split, k - 1)));
 		j = 0;
-		while (s[k] == c || s[k] == d)
+		while (s[k] == c)
 			k++;
-		while (s[k] != c && s[k] != d && s[k])
+		while (s[k] != c && s[k])
 			split[i][j++] = s[k++];
 		split[i][j] = '\0';
 		i++;
